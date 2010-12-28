@@ -123,10 +123,6 @@
     enable = true;
     exportConfiguration = true;
     layout = "us";
-    # XXX: hack to get it before the automagically added vesa screen
-    serverLayoutSection = ''
-      Screen "Screen-intel[0]"
-    '';
     videoDrivers = [ "intel" ];
     windowManager.awesome.enable = true;
     xkbOptions = "eurosign:e terminate:ctrl_alt_bksp";
