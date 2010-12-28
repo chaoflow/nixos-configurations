@@ -27,12 +27,12 @@
         #"ehci_hcd"
         #"uhci_hcd"
         #"usb_storage"
+        "acpi-cpufreq"
+        "cpufreq-ondemand"
       ];
     };
     kernelPackages = pkgs.linuxPackages_2_6_36;
     kernelModules = [
-      "acpi-cpufreq"
-      "cpufreq-ondemand"
       "kvm-intel"
     ];
     loader.grub = {
@@ -40,6 +40,10 @@
       version = 2;
       device = "/dev/sda";
     };
+    postBootCommands = ''
+      echo ondemand > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+      echo ondemand > /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor
+    '';
     resumeDevice = "254:0";
     vesa = false;
   };
