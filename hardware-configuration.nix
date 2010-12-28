@@ -13,8 +13,4 @@
   boot.extraModulePackages = [  ];
 
   nix.maxJobs = 2;
-
-  services.xserver.videoDriver = "vesa";
-  
-  
 }
