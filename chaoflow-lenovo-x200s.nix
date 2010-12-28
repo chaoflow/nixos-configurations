@@ -83,9 +83,10 @@
     { mountPoint = "/home";
       label = "home";
     }
-#    { mountPoint = "/mnt/ubuntu";
-#      label = "ubuntu";
-#    }
+    { mountPoint = "/mnt/ubuntu";
+      label = "ubuntu";
+      options = "noauto";
+    }
   ];
 
   swapDevices = [
