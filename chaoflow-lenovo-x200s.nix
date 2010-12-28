@@ -3,26 +3,38 @@
 # page of configuration.nix or at the last chapter of the manual available
 # on the virtual console 8 (Alt+F8).
 
-{config, pkgs, ...}:
+{config, pkgs, modulesPath, ...}:
 
 {
   require = [
-    # Include the configuration for part of your system which have been
-    # detected automatically.  In addition, it includes the same
-    # configuration as the installation device that you used.
-    ./hardware-configuration.nix
-    #XXX: should be turned into a networking enable option see 3945.nix
-    ../nixos/modules/hardware/network/intel-5000.nix
-#   ../nixos/modules/services/networking/wicd.nix
+    # from hardware-configuration
+    "${modulesPath}/profiles/base.nix"
+    "${modulesPath}/installer/scan/not-detected.nix"
+    #XXX: should be turned into a networking enable option (see 3945.nix)?
+    "${modulesPath}/hardware/network/intel-5000.nix"
+#   "${modulesPath}/services/networking/wicd.nix"
   ];
 
   boot = {
     initrd = {
       kernelModules = [
-        "ext4" "ahci" "fbcon" "i915"
+        # root fs
+        "ahci"
+        "ext4"
+        # proper console asap
+        "fbcon"
+        "i915"
+	# needed here? came from nixos-option generated hardware-configurations
+        #"ehci_hcd"
+        #"uhci_hcd"
+        #"usb_storage"
       ];
     };
     kernelPackages = pkgs.linuxPackages_2_6_36;
+    kernelModules = [
+      "acpi-cpufreq"
+      "kvm-intel"
+    ];
     loader.grub = {
       enable = true;
       version = 2;
@@ -45,18 +57,18 @@
       pkgs.remind
       pkgs.vim_configurable
     ];
-#    x11Packages = [
+    x11Packages = [
 #      pkgs.firefox
-#    ];
+    ];
   };
 
   networking = {
-    defaultMailServer = {
-      directDelivery = true;
-      domain = "chaoflow.net";
-      hostName = "tesla.chaoflow.net";
-      useSTARTTLS = true;
-    };
+#    defaultMailServer = {
+#      directDelivery = true;
+#      domain = "chaoflow.net";
+#      hostName = "tesla.chaoflow.net";
+#      useSTARTTLS = true;
+#    };
     enableWLAN = true;  # Enables Wireless.
     firewall = {
       enable = true;
@@ -64,6 +76,8 @@
     hostName = "eve"; # Define your hostname.
     interfaceMonitor.enable = true; # Watch for plugged cable.
   };
+
+  nix.maxJobs = 2;
 
   # Add file system entries for each partition that you want to see mounted
   # at boot time.  You can add filesystems which are not mounted at boot by
@@ -116,6 +130,9 @@
   # Add XServer (default if you have used a graphical iso)
   services.xserver = {
     autorun = false;
+    desktopManager = {
+      xterm.enable = false;
+    };
     displayManager.slim = {
       defaultUser = "cfl";
       hideCursor = true;
@@ -124,8 +141,12 @@
     exportConfiguration = true;
     layout = "us";
     videoDrivers = [ "intel" ];
-    windowManager.awesome.enable = true;
-    xkbOptions = "eurosign:e terminate:ctrl_alt_bksp";
+    windowManager = {
+      awesome.enable = true;
+      default = "awesome";
+    };
+    # XXX: terminate does not work
+    #xkbOptions = "eurosign:e terminate:ctrl_alt_bksp";
   };
 
   # Add the NixOS Manual on virtual console 8
