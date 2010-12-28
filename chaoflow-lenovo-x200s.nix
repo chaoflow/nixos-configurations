@@ -12,8 +12,8 @@
     # configuration as the installation device that you used.
     ./hardware-configuration.nix
     #XXX: should be turned into a networking enable option see 3945.nix
-    ./nixos/modules/hardware/network/intel-5000.nix
-#    ./nixos/modules/services/networking/wicd.nix
+    ../nixos/modules/hardware/network/intel-5000.nix
+#   ../nixos/modules/services/networking/wicd.nix
   ];
 
   boot = {
@@ -45,6 +45,9 @@
       pkgs.remind
       pkgs.vim_configurable
     ];
+#    x11Packages = [
+#      pkgs.firefox
+#    ];
   };
 
   networking = {
