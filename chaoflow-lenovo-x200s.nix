@@ -9,7 +9,6 @@
   require = [
     # from hardware-configuration
     "${modulesPath}/profiles/base.nix"
-    "${modulesPath}/installer/scan/not-detected.nix"
     #XXX: should be turned into a networking enable option (see 3945.nix)?
     "${modulesPath}/hardware/network/intel-5000.nix"
 #   "${modulesPath}/services/networking/wicd.nix"
@@ -33,6 +32,7 @@
     kernelPackages = pkgs.linuxPackages_2_6_36;
     kernelModules = [
       "acpi-cpufreq"
+      "cpufreq-ondemand"
       "kvm-intel"
     ];
     loader.grub = {
@@ -46,6 +46,8 @@
 
   environment = {
     systemPackages = [
+      pkgs.acpitool
+      pkgs.cpufrequtils
       pkgs.git
       pkgs.gnupg
       pkgs.htop
@@ -59,6 +61,10 @@
     ];
     x11Packages = [
 #      pkgs.firefox
+      pkgs.awesome
+      pkgs.rxvt_unicode
+      pkgs.xlibs.xinput
+      pkgs.xlibs.xmodmap
     ];
   };
 
@@ -111,6 +117,14 @@
     { label = "swap"; }
   ];
 
+  fonts = {
+    enableFontDir = true;
+    enableGhostscriptFonts = true;
+    extraFonts = [
+       pkgs.terminus_font
+    ];
+  };
+
   # Select internationalisation properties.
   i18n = {
     consoleFont = "lat9w-16";
@@ -129,24 +143,19 @@
 
   # Add XServer (default if you have used a graphical iso)
   services.xserver = {
-    autorun = false;
-    desktopManager = {
-      xterm.enable = false;
-    };
-    displayManager.slim = {
-      defaultUser = "cfl";
-      hideCursor = true;
+    autorun = true;
+    desktopManager.xterm.enable = false;
+    displayManager = {
+      slim = {
+        defaultUser = "cfl";
+        hideCursor = true;
+      };
     };
     enable = true;
     exportConfiguration = true;
     layout = "us";
     videoDrivers = [ "intel" ];
-    windowManager = {
-      awesome.enable = true;
-      default = "awesome";
-    };
-    # XXX: terminate does not work
-    #xkbOptions = "eurosign:e terminate:ctrl_alt_bksp";
+    xkbOptions = "eurosign:e";
   };
 
   # Add the NixOS Manual on virtual console 8
