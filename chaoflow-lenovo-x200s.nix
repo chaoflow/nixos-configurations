@@ -52,8 +52,10 @@
     systemPackages = [
       pkgs.acpitool
       pkgs.cpufrequtils
+      pkgs.gcc
       pkgs.git
-      pkgs.gnupg
+      pkgs.gnumake
+#      pkgs.gnupg_1_4_11
       pkgs.htop
       pkgs.keychain
       pkgs.links2
@@ -62,6 +64,8 @@
       pkgs.powertop
       pkgs.remind
       pkgs.vim_configurable
+      pkgs.wget
+      pkgs.yacc
       pkgs.zsh
     ];
     x11Packages = [
@@ -74,23 +78,6 @@
       pkgs.xlibs.xmodmap
     ];
   };
-
-  networking = {
-#    defaultMailServer = {
-#      directDelivery = true;
-#      domain = "chaoflow.net";
-#      hostName = "tesla.chaoflow.net";
-#      useSTARTTLS = true;
-#    };
-    enableWLAN = true;  # Enables Wireless.
-    firewall = {
-      enable = true;
-    };
-    hostName = "eve"; # Define your hostname.
-    interfaceMonitor.enable = false; # Watch for plugged cable.
-  };
-
-  nix.maxJobs = 2;
 
   # Add file system entries for each partition that you want to see mounted
   # at boot time.  You can add filesystems which are not mounted at boot by
@@ -119,10 +106,26 @@
     }
   ];
 
-  swapDevices = [
-    # List swap partitions that are mounted at boot time.
-    { label = "swap"; }
-  ];
+  networking = {
+#    defaultMailServer = {
+#      directDelivery = true;
+#      domain = "chaoflow.net";
+#      hostName = "tesla.chaoflow.net";
+#      useSTARTTLS = true;
+#    };
+    enableWLAN = true;  # Enables Wireless.
+    firewall = {
+      enable = true;
+    };
+    hostName = "eve"; # Define your hostname.
+    interfaceMonitor.enable = false; # Watch for plugged cable.
+  };
+
+  nix.maxJobs = 2;
+  nixpkgs.config = {
+    # for git svn
+    subversion = { perlBindings = true; };
+  };
 
   fonts = {
     enableFontDir = true;
@@ -137,6 +140,15 @@
     consoleFont = "lat9w-16";
     consoleKeyMap = "us";
     defaultLocale = "en_US.UTF-8";
+  };
+
+  installer = {
+    repos = {
+      # this needs gitsvn support, currently only in my branch:
+      # https://github.com/chaoflow/nixos/tree/cfl
+      nixos = [ { type = "gitsvn"; } ];
+      nixpkgs = [ { type = "gitsvn"; } ];
+    };
   };
 
   powerManagement.enable = true;
@@ -163,6 +175,10 @@
   # Add XServer (default if you have used a graphical iso)
   services.xserver = {
     autorun = true;
+    # no desktop manager, no window manager configured here. This
+    # results in only one session *custom* for slim which executes
+    # ~/.xsession. See:
+    # https://github.com/chaoflow/chaoflow.skel.home/blob/master/.xsession
     desktopManager.xterm.enable = false;
     displayManager = {
       slim = {
@@ -179,6 +195,11 @@
 
   # Add the NixOS Manual on virtual console 8
   services.nixosManual.showManual = true;
+
+  swapDevices = [
+    # List swap partitions that are mounted at boot time.
+    { label = "swap"; }
+  ];
 
   time.timeZone = "Europe/Berlin";
 }

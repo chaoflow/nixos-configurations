@@ -1,6 +1,7 @@
 NixOS Configuration
 ===================
 
+
 Hardware
 --------
 
@@ -40,19 +41,26 @@ Software
 - window manager: awesome
 - mailing: mutt, postfix, offlineimap
 - calendar: remind, wyrd
-- browser: firefox
+- browser: firefox with vimperator
+
+
+I'm aiming at getting my changes into the official nixos and nixpkgs repos. In
+any case here are the versions of nixpkgs and nixos I am using:
+
+- nixos: https://github.com/chaoflow/nixos
+- nixpkgs: https://github.com/chaoflow/nixpkgs
 
 
 TODO
 ----
 
-- git aliases for root
 - mta as maildrop with smtp auth
-- gnupg
 - mutt + gnupg
 - vim + plugins
 - wyrd
 - custom keymap or migrate to pure xmodmap
+- more fonts
+- zsh
 
 
 Issues
