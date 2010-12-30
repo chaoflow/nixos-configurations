@@ -62,12 +62,15 @@
       pkgs.powertop
       pkgs.remind
       pkgs.vim_configurable
+      pkgs.zsh
     ];
     x11Packages = [
-#      pkgs.firefox
+      pkgs.firefox36Wrapper
       pkgs.awesome
       pkgs.rxvt_unicode
+      pkgs.vlc
       pkgs.xlibs.xinput
+      pkgs.xlibs.xmessage
       pkgs.xlibs.xmodmap
     ];
   };
@@ -84,7 +87,7 @@
       enable = true;
     };
     hostName = "eve"; # Define your hostname.
-    interfaceMonitor.enable = true; # Watch for plugged cable.
+    interfaceMonitor.enable = false; # Watch for plugged cable.
   };
 
   nix.maxJobs = 2;
@@ -138,6 +141,18 @@
 
   powerManagement.enable = true;
 
+#  security.sudo.configFile = ''
+## Don't edit this file. Set nixos option security.sudo.configFile instead
+#
+#Defaults env_reset
+#Defaults env_keep=LOCALE_ARCHIVE
+#
+## "root" is allowed to do anything.
+#root ALL=(ALL) SETENV: ALL
+#
+## Users in the "wheel" group can do anything.
+#%wheel ALL=(ALL) SETENV: ALL
+#  '';
   services.acpid.enable = true;
   services.locate.enable = true;
   services.openssh.enable = true;
