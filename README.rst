@@ -54,7 +54,6 @@ any case here are the versions of nixpkgs and nixos I am using:
 TODO
 ----
 
-- mta as maildrop with smtp auth
 - mutt + gnupg
 - vim + plugins
 - wyrd
@@ -73,6 +72,14 @@ Issues
 - zsh paths are messed up, looks like /etc/bashrc and profile should be split
 - anacron or is it somehow else ensured that commands are run, if powered off at given time
 - collisions in system-environment, priorization?
+- mutt expects /usr/bin/sendmail (bypassed via .muttrc, not how it is supposed to be)
+- mail (from mailutils) expects /usr/bin/sendmail
+- postfix issues several warnings
+- postfix, received header (Local time zone must be set--see zic manual page)
+- postfix, verify server certificate
+- postfix, check whether it runs chrooted
+- postconf: smtp_sasl_tls_security_options = $var_smtp_sasl_opts ?! manually overwritten
+
 
 
 nice to have
@@ -86,3 +93,5 @@ nice to have
   max_performance again (old, from ubuntu)
 - console keymap (alt, ctrl on caps)
 - visual beep / no beep
+- mail rely should pretend mails coming via submission are locally generated to
+  hide ip of the client sending it (server issue, not nixos related)
