@@ -79,7 +79,9 @@ Issues
 - postfix, verify server certificate
 - postfix, check whether it runs chrooted
 - postconf: smtp_sasl_tls_security_options = $var_smtp_sasl_opts ?! manually overwritten
-
+- rebasing of my branches collides with github: master (current branch) cannot
+  be deleted and pushing with rewriting history is not supported. Maybe merging
+  would be better.
 
 
 nice to have
