@@ -57,7 +57,6 @@ TODO
 - mutt + gnupg
 - vim + plugins
 - wyrd
-- custom keymap or migrate to pure xmodmap
 - more fonts
 - zsh
 
