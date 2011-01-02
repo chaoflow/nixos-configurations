@@ -152,8 +152,16 @@
     repos = {
       # this needs gitsvn support, currently only in my branch:
       # https://github.com/chaoflow/nixos
-      nixos = [ { type = "gitsvn"; } ];
-      nixpkgs = [ { type = "gitsvn"; } ];
+      nixos = [
+        { type = "gitsvn";
+          update = "git checkout official && git svn fetch && git svn rebase -l && git checkout master && git merge official";
+        }
+      ];
+      nixpkgs = [
+        { type = "gitsvn";
+          update = "git checkout official && git svn fetch && git svn rebase -l && git checkout master && git merge official";
+        }
+      ];
     };
   };
 
