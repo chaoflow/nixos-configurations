@@ -59,6 +59,7 @@ TODO
 - wyrd
 - more fonts
 - zsh
+- get rid of all sytem profiles except the current
 
 
 Issues
@@ -96,3 +97,38 @@ nice to have
 - visual beep / no beep
 - mail rely should pretend mails coming via submission are locally generated to
   hide ip of the client sending it (server issue, not nixos related)
+
+
+nix store optimise reports far less savings than achieved::
+  [root@eve:~]# df -h            
+  Filesystem            Size  Used Avail Use% Mounted on
+  /dev/mapper/eve-nixos
+			7.9G  5.0G  2.6G  67% /
+  none                  3.9G  2.0M  3.9G   1% /dev
+  tmpfs                 3.9G     0  3.9G   0% /dev/shm
+  none                  3.9G  720K  3.9G   1% /var/run
+  /dev/mapper/eve-home  119G  100G   14G  89% /home
+
+  [root@eve:~]# nix-store --optimise
+  skipping suspicious writable file `/nix/store/h531fraz114nyf7bh15aqfdk9nif6j8q-linux-2.6.36.2/lib/modules/2.6.36.2/modules.ccwmap'
+  skipping suspicious writable file `/nix/store/h531fraz114nyf7bh15aqfdk9nif6j8q-linux-2.6.36.2/lib/modules/2.6.36.2/modules.ofmap'
+  skipping suspicious writable file `/nix/store/h531fraz114nyf7bh15aqfdk9nif6j8q-linux-2.6.36.2/lib/modules/2.6.36.2/modules.pcimap'
+  skipping suspicious writable file `/nix/store/h531fraz114nyf7bh15aqfdk9nif6j8q-linux-2.6.36.2/lib/modules/2.6.36.2/modules.seriomap'
+  skipping suspicious writable file `/nix/store/h531fraz114nyf7bh15aqfdk9nif6j8q-linux-2.6.36.2/lib/modules/2.6.36.2/modules.symbols'
+  skipping suspicious writable file `/nix/store/h531fraz114nyf7bh15aqfdk9nif6j8q-linux-2.6.36.2/lib/modules/2.6.36.2/modules.ieee1394map'
+  skipping suspicious writable file `/nix/store/h531fraz114nyf7bh15aqfdk9nif6j8q-linux-2.6.36.2/lib/modules/2.6.36.2/modules.isapnpmap'
+  skipping suspicious writable file `/nix/store/h531fraz114nyf7bh15aqfdk9nif6j8q-linux-2.6.36.2/lib/modules/2.6.36.2/modules.alias'
+  skipping suspicious writable file `/nix/store/h531fraz114nyf7bh15aqfdk9nif6j8q-linux-2.6.36.2/lib/modules/2.6.36.2/modules.inputmap'
+  skipping suspicious writable file `/nix/store/h531fraz114nyf7bh15aqfdk9nif6j8q-linux-2.6.36.2/lib/modules/2.6.36.2/modules.dep'
+  skipping suspicious writable file `/nix/store/h531fraz114nyf7bh15aqfdk9nif6j8q-linux-2.6.36.2/lib/modules/2.6.36.2/modules.usbmap'
+  816411305 bytes (778.59 MiB, 3690712 blocks) freed by hard-linking 308398 files; there are 308398 files with equal contents out of 404000 files in total
+
+  [root@eve:~]# df -h
+  Filesystem            Size  Used Avail Use% Mounted on
+  /dev/mapper/eve-nixos
+			7.9G  3.2G  4.3G  43% /
+  none                  3.9G  2.0M  3.9G   1% /dev
+  tmpfs                 3.9G     0  3.9G   0% /dev/shm
+  none                  3.9G  720K  3.9G   1% /var/run
+  /dev/mapper/eve-home  119G  100G   14G  89% /home
+
