@@ -58,12 +58,17 @@
       pkgs.gnumake
 #      pkgs.gnupg_1_4_11
       pkgs.htop
+      pkgs.ipython
       pkgs.keychain
       pkgs.links2
       pkgs.mailutils
+      pkgs.mercurial
       pkgs.mutt
       pkgs.offlineimap
       pkgs.powertop
+      pkgs.python24
+      pkgs.python26Full
+      pkgs.python27Full
       pkgs.remind
       pkgs.vim_configurable
       pkgs.wget

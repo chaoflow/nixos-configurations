@@ -60,7 +60,8 @@ TODO
 - more fonts
 - zsh
 - get rid of all sytem profiles except the current
-
+- understand the difference between a packag, derivation and attribute. How does nix-env -i <foo> relate to pkgs.fooBar?
+- ipython for each python version
 
 Issues
 ^^^^^^
