@@ -53,8 +53,9 @@
     systemPackages = [
       pkgs.acpitool
       pkgs.cpufrequtils
+      pkgs.ddrescue
       pkgs.gcc
-      pkgs.git
+      pkgs.gitFull
       pkgs.gnumake
 #      pkgs.gnupg_1_4_11
       pkgs.htop
@@ -114,25 +115,6 @@
     }
   ];
 
-  networking = {
-    domain = "chaoflow.net";
-    enableWLAN = true;
-    # hardcode domain name
-    extraHosts = "127.0.0.1 eve.chaoflow.net eve";
-    firewall = {
-      enable = true;
-    };
-    hostName = "eve";
-    interfaceMonitor.enable = false; # Watch for plugged cable.
-  };
-
-  nix.maxJobs = 2;
-  nixpkgs.config = {
-    # for git svn
-    subversion = { perlBindings = true; };
-    xkeyboard_config = { extraLayoutPath = "./xkb-layout/chaoflow"; };
-  };
-
   fonts = {
     enableFontDir = true;
     enableGhostscriptFonts = true;
@@ -163,6 +145,23 @@
         }
       ];
     };
+  };
+
+  networking = {
+    domain = "chaoflow.net";
+    enableWLAN = true;
+    # hardcode domain name
+    extraHosts = "127.0.0.1 eve.chaoflow.net eve";
+    firewall = {
+      enable = true;
+    };
+    hostName = "eve";
+    interfaceMonitor.enable = false; # Watch for plugged cable.
+  };
+
+  nix.maxJobs = 2;
+  nixpkgs.config = {
+    xkeyboard_config = { extraLayoutPath = "./xkb-layout/chaoflow"; };
   };
 
   powerManagement.enable = true;
