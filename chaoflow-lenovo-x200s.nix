@@ -55,9 +55,10 @@
       pkgs.cpufrequtils
       pkgs.ddrescue
       pkgs.gcc
+      pkgs.geeqie
       pkgs.gitFull
       pkgs.gnumake
-#      pkgs.gnupg_1_4_11
+      pkgs.gnupg1orig
       pkgs.htop
       pkgs.ipython
       pkgs.keychain
@@ -66,13 +67,17 @@
       pkgs.mercurial
       pkgs.mutt
       pkgs.offlineimap
+      pkgs.openldap
       pkgs.powertop
+      pkgs.pwgen
       pkgs.python24
       pkgs.python26Full
       pkgs.python27Full
       pkgs.remind
       pkgs.vim_configurable
       pkgs.wget
+      # would prefer slock, but need to package it first
+      pkgs.xlockmore
       pkgs.yacc
       pkgs.zsh
     ];
