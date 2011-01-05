@@ -23,7 +23,7 @@
         # proper console asap
         "fbcon"
         "i915"
-	# needed here? came from nixos-option generated hardware-configurations
+        # needed here? came from nixos-option generated hardware-configurations
         #"ehci_hcd"
         #"uhci_hcd"
         #"usb_storage"
@@ -194,19 +194,37 @@
     postfix = {
       destination = [ "localhost" "eve.chaoflow.net" ];
       enable = true;
-      # this needs extraConfig support, currently only in my branch:
-      # https://github.com/chaoflow/nixos
       extraConfig = ''
+        # For all options see ``man 5 postconf``
+        # Take care, empty lines will mess up whitespace removal.
+        # It would be nice if empty lines would not be considered in minimal
+        # leading whitespace analysis, but don't know about further implications.
+        # Also take care not to mix tabs and spaces. Should tabs be treated
+        # like 8 spaces?
+        #
         # ATTENTION! Will log passwords
         #debug_peer_level = 4
         #debug_peer_list = tesla.chaoflow.net
         inet_interfaces = loopback-only
+        #
+        # the nixos config option does not allow to specify a port, beware:
+        # small 'h' in contrast to the config option with capital 'H'
         relayhost = [tesla.chaoflow.net]:submission
+        #
         #XXX: needs server certificate checking
         #smtp_enforce_tls = yes
-        smtp_generic_maps = hash:/etc/nixos/cfg-public/postfix_generic_map
+        #
+        # postfix generic map example content:
+        #   user@local.email user@public.email
+        # Run ``# postmap hash:/etc/nixos/cfg-private/postfix_generic_map``
+        # after changing it.
+        smtp_generic_maps = hash:/etc/nixos/cfg-private/postfix_generic_map
         smtp_sasl_auth_enable = yes
         smtp_sasl_mechanism_filter = plain, login
+        #
+        # username and password for smtp auth, example content:
+        #  <relayhost> <username>:<password>
+        # The <relayhost> is exactly what you specified for relayHost, resp. relayhost.
         smtp_sasl_password_maps = hash:/etc/nixos/cfg-private/postfix_sasl_passwd
         smtp_sasl_security_options = noanonymous
         smtp_sasl_tls_security_options = $smtp_sasl_security_options
@@ -229,10 +247,10 @@
       # https://github.com/chaoflow/chaoflow.skel.home/blob/master/.xsession
       desktopManager.xterm.enable = false;
       displayManager = {
-	slim = {
-	  defaultUser = "cfl";
-	  hideCursor = true;
-	};
+        slim = {
+          defaultUser = "cfl";
+          hideCursor = true;
+        };
       };
       enable = true;
       exportConfiguration = true;
