@@ -72,12 +72,11 @@
     # use the default profile.
     systemPackages = [
       pkgs.acpitool
+      pkgs.bc
       pkgs.cpufrequtils
       pkgs.ddrescue
-      pkgs.gcc
-      pkgs.geeqie
+      pkgs.file
       pkgs.gitFull
-      pkgs.gnumake
       pkgs.gnupg1orig
       pkgs.htop
       pkgs.ipython
@@ -87,28 +86,25 @@
       pkgs.mercurial
       pkgs.mutt
       pkgs.offlineimap
-      pkgs.openldap
+      pkgs.p7zip
       pkgs.powertop
       pkgs.pwgen
-      pkgs.python24
-      pkgs.python26Full
-      pkgs.python27Full
       pkgs.remind
       pkgs.vim_configurable
       pkgs.wget
-      # would prefer slock, but need to package it first
-      pkgs.xlockmore
-      pkgs.yacc
       pkgs.zsh
     ];
     x11Packages = [
-      pkgs.firefox36Wrapper
       pkgs.awesome
+      pkgs.firefox36Wrapper
+      pkgs.geeqie
       pkgs.rxvt_unicode
       pkgs.vlc
       pkgs.xlibs.xinput
       pkgs.xlibs.xmessage
       pkgs.xlibs.xmodmap
+      # would prefer slock, but need to package it first
+      pkgs.xlockmore
       pkgs.xpdf
     ];
   };
