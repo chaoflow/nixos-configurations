@@ -4,12 +4,21 @@ xkb_symbols "basic" {
 
 	include "us(intl)"
 
+	// based on a physical US layout
+
+	// AE is the row with numbers
+	// AD
+	// AC
+	// AB the lowest one with letters, above the space bar row
+
+
 	// fixing dead keys
 	key <AE06> { [ 6, asciicircum, onequarter, dead_circumflex ] };
 
-
+	// top-left, left of 1
 	//key <TLDE> { [dead_grave, dead_tilde, grave, asciitilde ] };
 	key <TLDE> { [ grave, asciitilde, dead_grave, dead_tilde ] };
+
 
 	//// German umlauts on their german keys
 	// ß
@@ -30,22 +39,23 @@ xkb_symbols "basic" {
 
 
 	//// Serbian latin consonants
-	// x
-	key <AB02> { [ any, any, ccaron, Ccaron ] };
-
-	// c
+	// ć
 	//key <AB03> { [ c, C, copyright, cent ] };
 	key <AB03> { [ any, any, cacute, Cacute ] };
 
-	// us: z
-	//key <AB01> { [ z, Z, ae, AE ] };
-	key <AB01> { [ any, any, zcaron, Zcaron ] };
+	// č
+	//key <AB04> { [ v, V, v, V ] };
+	key <AB04> { [ any, any, ccaron, Ccaron ] };
 
-	// d
+	// đ
 	//key <AC03> { [ d, D, eth, ETH ] };
 	key <AC03> { [ any, any, dstroke, Dstroke ] };
 
-	// s
+	// ž
+	//key <AB01> { [ z, Z, ae, AE ] };
+	key <AB01> { [ any, any, zcaron, Zcaron ] };
+
+	// š
 	//key <AC02> { [ s, S, ssharp, section ] };
 	key <AC02> { [ any, any, scaron, Scaron ] };
 
@@ -69,6 +79,7 @@ xkb_symbols "basic" {
 	key <AC06> { [ any, any, guillemotleft,  leftdoublequotemark  ] };
 	key <AC07> { [ any, any, guillemotright, rightdoublequotemark ] };
 
+	// does not exist on a physical US, but DE
 	key <LSGT> { [ dead_acute, dead_diaeresis, Multi_key, any ] }; // right of Shift_L
 
 
