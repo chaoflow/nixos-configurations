@@ -1,57 +1,82 @@
 default
 xkb_symbols "basic" {
-	include "latin"
-	include "eurosign(e)"
+	name[Group1]= "chaoflow variant of USA Intl w/ dead keys";
 
-	name[Group1]= "U.S. English + specials";
+	include "us(intl)"
 
-	// PC-style us layout
-	key <TLDE> { [ grave, asciitilde, dead_circumflex, dead_caron ] }; // left of '1'
-	// XXX: give me sense
-	key <LSGT> { [ dead_acute, dead_grave, Multi_key, any ] }; // right of Shift_L
+	// fixing dead keys
+	key <AE06> { [ 6, asciicircum, onequarter, dead_circumflex ] };
 
-	// key <SPCE> {
-	//     type[Group1]="FOUR LEVEL",
-	//     symbols[Group1]=[ space, nobreakspace ]
-	// }; 
+
+	//key <TLDE> { [dead_grave, dead_tilde, grave, asciitilde ] };
+	key <TLDE> { [ grave, asciitilde, dead_grave, dead_tilde ] };
 
 	//// German umlauts on their german keys
-	// ß:
-	// key <AE11> { [ minus, underscore, backslash, questiondown ] };
+	// ß
+	//key <AE11> { [ minus, underscore, yen, dead_belowdot ] };
 	key <AE11> { [ any, any, ssharp, any ] };
 
-	// ü:
-	// key <AD11> { [bracketleft, braceleft, dead_diaeresis, dead_abovering ] };
+	// ü
+	//key <AD11> { [ bracketleft,  braceleft,  guillemotleft, leftdoublequotemark ] };
 	key <AD11> { [ any, any, udiaeresis, Udiaeresis ] };
 
-	// ö:
-    	// key <AC10> { [ semicolon, colon, dead_acute, dead_doubleacute ] };
+	// ö
+	//key <AC10> { [ semicolon, colon, paragraph, degree ] };
 	key <AC10> { [ any, any, odiaeresis, Odiaeresis ] };
 
-	// ä:
-    	//key <AC11> { [apostrophe, quotedbl, dead_circumflex, dead_caron ] };
-	key <AC11> { [ any, any, adiaeresis, Adiaeresis ] };
+	// ä
+	//key <AC11> { [dead_acute, dead_diaeresis, apostrophe, quotedbl ] };
+	key <AC11> { [ apostrophe, quotedbl, adiaeresis, Adiaeresis ] };
 
-	// Serbian latin consonants + saving important
-	key <AC09> { [ any, any, any,     sterling ] }; // L
-	key <AE03> { [ any, any, any,     section  ] }; // 3
-	key <AC02> { [ any, any, scaron,  Scaron   ] }; // s
-	key <AC03> { [ any, any, dstroke, Dstroke ] }; // d
-	key <AB08> { [ any, any, ellipsis, guillemotleft  ] }; // ,
-	key <AB09> { [ any, any, any,     guillemotright ] }; // .
-	key <AB01> { [ any, any, zcaron,  Zcaron         ] }; // z
-	key <AD01> { [ any, any, cacute,  Cacute  ] }; // q
-	key <AD02> { [ any, any, ccaron,  Ccaron  ] }; // w
 
-	// Spanish stuff
-	key <AB06> { [ any, any, ntilde, Ntilde ] }; // n
-	// key <AB10> { [ any, any, any, questiondown ] }; // /
+	//// Serbian latin consonants
+	// x
+	key <AB02> { [ any, any, ccaron, Ccaron ] };
 
-	// missing 
-	// dead_abovering
-	// dead_acute
-	// dead_caron
-	// dead_circumflex
-	// dead_diaeresis
-	// dead_doubleacute
+	// c
+	//key <AB03> { [ c, C, copyright, cent ] };
+	key <AB03> { [ any, any, cacute, Cacute ] };
+
+	// us: z
+	//key <AB01> { [ z, Z, ae, AE ] };
+	key <AB01> { [ any, any, zcaron, Zcaron ] };
+
+	// d
+	//key <AC03> { [ d, D, eth, ETH ] };
+	key <AC03> { [ any, any, dstroke, Dstroke ] };
+
+	// s
+	//key <AC02> { [ s, S, ssharp, section ] };
+	key <AC02> { [ any, any, scaron, Scaron ] };
+
+
+	//// rescueing some stuff
+	//key <AD06> { [ y, Y, udiaeresis, Udiaeresis ] };
+	key <AD06> { [ any, any, yen, any ] };
+
+	// p: paragraph and coPyright
+	//key <AD10> { [ p, P, odiaeresis, Odiaeresis ] };
+	key <AD10> { [ any, any, copyright, paragraph ] };
+
+	// 5: cent
+	//key <AE05> { [ 5, percent, EuroSign, dead_cedilla ] };
+	key <AE05> { [ any, any, any, cent ] };
+
+	// g
+	key <AC05> { [ any, any, degree, section ] };
+
+	// h,j
+	key <AC06> { [ any, any, guillemotleft,  leftdoublequotemark  ] };
+	key <AC07> { [ any, any, guillemotright, rightdoublequotemark ] };
+
+	key <LSGT> { [ dead_acute, dead_diaeresis, Multi_key, any ] }; // right of Shift_L
+
+
+	//// now missing:
+	// dead_cedilla
+	// ae AE
+	// eth ETH
+
+	// for free keys check with: xmodmap -pke
+	// shift alt m is free
 };
