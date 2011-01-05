@@ -1,6 +1,13 @@
 NixOS Configuration
 ===================
 
+Configuration and description of my nixos configuration. If you have some nice
+ideas how to improve, feel free to fork and let me know about your changes.
+
+Also if I am explaining something wrong, please let me know.
+
+Enjoy NixOS!
+
 
 Hardware
 --------
@@ -40,7 +47,7 @@ Software
 - display manager: slim
 - window manager: awesome
 - mailing: mutt, postfix, offlineimap
-- calendar: remind, wyrd
+- calendar: remind, wyrd (not yet)
 - browser: firefox with vimperator
 
 
@@ -54,18 +61,21 @@ any case here are the versions of nixpkgs and nixos I am using:
 TODO
 ----
 
+- create config dir in nixos svn and point to github
+- suspend and hibernate vie Fn-<key>, used to work via awesome mappings
+- (semi-)automatic backup
 - mutt + gnupg
 - vim + plugins
 - wyrd
 - more fonts
 - zsh
-- get rid of all sytem profiles except the current
 - understand the difference between a packag, derivation and attribute. How does nix-env -i <foo> relate to pkgs.fooBar?
 - ipython for each python version
+- hibernate on very low battery
+- modularize config so generic parts can be reused by others directly
 
 Issues
 ^^^^^^
-
 - awesome cannot set background but feh is in system-path
 - sudo does not remember me after system restart
 - sudo nixos-rebuild switch complains about locales
@@ -87,7 +97,16 @@ Issues
 
 nice to have
 ^^^^^^^^^^^^
-
+- get pm-suspend-hybrid to work, I think it does hibernate but then only
+  suspends. Good if you forget that your laptop is in suspend for a couple of
+  days. On the other hand, hibernate and resume from it is fast enough. so
+  basically no need for suspend.
+- pm-powersave true|false support?
+- package qbittorrent
+- how could profiles be tested? including then packaged vim plugins,
+  zc.buildouts depending on them, ... Would be great to build a new profile and
+  automatically test it
+- can system profiles be labelled so they show up more meaningful in grub?
 - mutt colors
 - wicd
 - replace rsyslog with something that buffers and only rarely writes to disk
@@ -133,3 +152,19 @@ nix store optimise reports far less savings than achieved::
   none                  3.9G  720K  3.9G   1% /var/run
   /dev/mapper/eve-home  119G  100G   14G  89% /home
 
+
+Credits
+-------
+
+A big thank you for patient support via irc and mail:
+
+- Cillian de Róiste
+- Eelco Dolstra
+- Evgeny Egorochkin
+- Lluís Batlle i Rossell
+- Marc Weber
+- Micheal Raskin
+- Nicolas Pierron
+- Peter Simons
+- Viric
+- Vladimír Čunát

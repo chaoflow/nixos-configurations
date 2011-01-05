@@ -20,14 +20,17 @@
         # root fs
         "ahci"
         "ext4"
+
         # proper console asap
         "fbcon"
         "i915"
+
         # needed here? came from nixos-option generated hardware-configurations
         #"ehci_hcd"
         #"uhci_hcd"
         #"usb_storage"
-        # enable setting ondemand governor in next stage (postBootCommands)
+
+        # needed for setting ondemand governor in next stage (see postBootCommands)
         "acpi-cpufreq"
         "cpufreq-ondemand"
       ];
@@ -36,20 +39,37 @@
     kernelModules = [
       "kvm-intel"
     ];
+
+    # grub 2 can boot from lvm, not sure whether version 2 is default
     loader.grub = {
       enable = true;
       version = 2;
       device = "/dev/sda";
     };
+
+    # Currently I'm aiming only at minimum power usage. Changing these settings
+    # when on AC might be added later. min_power setting seems only to be
+    # effective for hosts that are actually connected to something, in my case
+    # only host0.
     postBootCommands = ''
-      echo ondemand > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-      echo ondemand > /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor
+      for x in /sys/devices/system/cpu/*/cpufreq/scaling_governor; do
+        echo ondemand > $x
+      done
+      for x in /sys/class/scsi_host/*/link_power_management_policy; do
+        echo min_power > $x
+      done
     '';
+
+    # major:minor number of my swap device, fully lvm-based system
     resumeDevice = "254:0";
+
+    # disabled for fbcon and i915 to kick in (see kernelModules above)
     vesa = false;
   };
 
   environment = {
+    # XXX: still not sure when it is better to put a package here and when to
+    # use the default profile.
     systemPackages = [
       pkgs.acpitool
       pkgs.cpufrequtils
@@ -120,9 +140,13 @@
     }
   ];
 
+  # XXX: add more fonts!
   fonts = {
     enableFontDir = true;
     enableGhostscriptFonts = true;
+
+    # terminus I use for rxvt-unicode
+    # see https://github.com/chaoflow/chaoflow.skel.home/blob/master/.Xdefaults
     extraFonts = [
        pkgs.terminus_font
     ];
