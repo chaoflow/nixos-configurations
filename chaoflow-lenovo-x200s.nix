@@ -204,10 +204,10 @@
         relayhost = [tesla.chaoflow.net]:submission
         #XXX: needs server certificate checking
         #smtp_enforce_tls = yes
-        smtp_generic_maps = hash:/etc/nixos/postfix_generic_map
+        smtp_generic_maps = hash:/etc/nixos/cfg-public/postfix_generic_map
         smtp_sasl_auth_enable = yes
         smtp_sasl_mechanism_filter = plain, login
-        smtp_sasl_password_maps = hash:/etc/nixos/private/postfix_sasl_passwd
+        smtp_sasl_password_maps = hash:/etc/nixos/cfg-private/postfix_sasl_passwd
         smtp_sasl_security_options = noanonymous
         smtp_sasl_tls_security_options = $smtp_sasl_security_options
         smtp_use_tls = yes
