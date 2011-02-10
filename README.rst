@@ -79,6 +79,7 @@ TODO
 - ipython for each python version
 - hibernate on very low battery
 - modularize config so generic parts can be reused by others directly
+- grub menu: indicate number of profile used as default, eg. in brackets
 
 Issues
 ^^^^^^
