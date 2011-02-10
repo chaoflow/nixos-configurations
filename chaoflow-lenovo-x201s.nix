@@ -10,7 +10,7 @@
     # from hardware-configuration
     "${modulesPath}/profiles/base.nix"
     #XXX: should be turned into a networking enable option (see 3945.nix)?
-    "${modulesPath}/hardware/network/intel-5000.nix"
+    "${modulesPath}/hardware/network/intel-6000.nix"
 #   "${modulesPath}/services/networking/wicd.nix"
   ];
 
@@ -35,7 +35,7 @@
         "cpufreq-ondemand"
       ];
     };
-    kernelPackages = pkgs.linuxPackages_2_6_36;
+    kernelPackages = pkgs.linuxPackages_2_6_37;
     kernelModules = [
       "kvm-intel"
     ];
@@ -68,6 +68,14 @@
   };
 
   environment = {
+    # To also get the header files in the system environment. You only need
+    # this if you want compile non-nixos stuff against the system environment.
+    # You would only want that as a part of temporary solution to continue on
+    # whatever you were working before christmas. However, there are better
+    # ways. See https://github.com/chaoflow/nixos-configurations for more on
+    # that.
+    #pathsToLink = ["include"];
+
     # XXX: still not sure when it is better to put a package here and when to
     # use the default profile.
     systemPackages = [
@@ -182,9 +190,11 @@
     };
     hostName = "eve";
     interfaceMonitor.enable = false; # Watch for plugged cable.
+    # for some reason udev renames wlan0 to wlan1
+    WLANInterface = "wlan1";
   };
 
-  nix.maxJobs = 2;
+  nix.maxJobs = 4;
   nixpkgs.config = {
     xkeyboard_config = { extraLayoutPath = "./xkb-layout/chaoflow"; };
   };
