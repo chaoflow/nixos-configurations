@@ -20,22 +20,22 @@ xkb_symbols "basic" {
 	key <TLDE> { [ grave, asciitilde, dead_grave, dead_tilde ] };
 
 
-	//// German umlauts on their german keys
-	// ß
+	//// German umlauts
+	// ß at its german position
 	//key <AE11> { [ minus, underscore, yen, dead_belowdot ] };
 	key <AE11> { [ any, any, ssharp, any ] };
 
-	// ü
-	//key <AD11> { [ bracketleft,  braceleft,  guillemotleft, leftdoublequotemark ] };
-	key <AD11> { [ any, any, udiaeresis, Udiaeresis ] };
+	// ü on u
+	//key <AD07> { [ u, U, uacute, Uacute ] };
+	key <AD07> { [ u, U, udiaeresis, Udiaeresis ] };
 
-	// ö
-	//key <AC10> { [ semicolon, colon, paragraph, degree ] };
-	key <AC10> { [ any, any, odiaeresis, Odiaeresis ] };
+	// ö on o
+	//key <AD09> { [ o, O, oacute, Oacute ] };
+	key <AD09> { [ o, O, odiaeresis, Odiaeresis ] };
 
-	// ä
-	//key <AC11> { [dead_acute, dead_diaeresis, apostrophe, quotedbl ] };
-	key <AC11> { [ apostrophe, quotedbl, adiaeresis, Adiaeresis ] };
+	// ä on a
+	//key <AC01> { [ a, A, aacute, Aacute ] };
+	key <AC01> { [ a, A, adiaeresis, Adiaeresis ] };
 
 
 	//// Serbian latin consonants
@@ -60,6 +60,11 @@ xkb_symbols "basic" {
 	key <AC02> { [ any, any, scaron, Scaron ] };
 
 
+	// fixing apostrophe and quotedbl
+	//key <AC11> { [dead_acute, dead_diaeresis, apostrophe, quotedbl ] };
+	key <AC11> { [ apostrophe, quotedbl, dead_acute, dead_diaeresis ] };
+
+
 	//// rescueing some stuff
 	//key <AD06> { [ y, Y, udiaeresis, Udiaeresis ] };
 	key <AD06> { [ any, any, yen, any ] };
@@ -76,17 +81,18 @@ xkb_symbols "basic" {
 	key <AC05> { [ any, any, degree, section ] };
 
 	// h,j
-	key <AC06> { [ any, any, guillemotleft,  leftdoublequotemark  ] };
-	key <AC07> { [ any, any, guillemotright, rightdoublequotemark ] };
+	//key <AC06> { [ any, any, guillemotleft,  leftdoublequotemark  ] };
+	//key <AC07> { [ any, any, guillemotright, rightdoublequotemark ] };
 
 	// does not exist on a physical US, but DE
 	key <LSGT> { [ dead_acute, dead_diaeresis, Multi_key, any ] }; // right of Shift_L
-
 
 	//// now missing:
 	// dead_cedilla
 	// ae AE
 	// eth ETH
+	// uacute Uacute
+	// oacute Oacute
 
 	// for free keys check with: xmodmap -pke
 	// shift alt m is free
