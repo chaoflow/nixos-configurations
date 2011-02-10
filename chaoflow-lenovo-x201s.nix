@@ -8,7 +8,7 @@
 {
   require = [
     # from hardware-configuration
-    "${modulesPath}/profiles/base.nix"
+    #"${modulesPath}/profiles/base.nix"
     #XXX: should be turned into a networking enable option (see 3945.nix)?
     "${modulesPath}/hardware/network/intel-6000.nix"
 #   "${modulesPath}/services/networking/wicd.nix"
@@ -95,11 +95,17 @@
       pkgs.mutt
       pkgs.offlineimap
       pkgs.p7zip
+      pkgs.parted
       pkgs.powertop
       pkgs.pwgen
+      pkgs.screen
+      pkgs.subversion
       pkgs.remind
+      pkgs.unrar
+      pkgs.unzip
       pkgs.vim_configurable
       pkgs.wget
+      pkgs.w3m
       pkgs.zsh
     ];
     x11Packages = [
