@@ -25,11 +25,6 @@
         "fbcon"
         "i915"
 
-        # needed here? came from nixos-option generated hardware-configurations
-        #"ehci_hcd"
-        #"uhci_hcd"
-        #"usb_storage"
-
         # needed for setting ondemand governor in next stage (see postBootCommands)
         "acpi-cpufreq"
         "cpufreq-ondemand"
