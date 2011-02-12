@@ -170,12 +170,12 @@
       # https://github.com/chaoflow/nixos
       nixos = [
         { type = "gitsvn";
-          update = "git checkout official && git svn fetch && git svn rebase -l && git checkout master && git merge official";
+          update = "git checkout master && git svn fetch && git svn rebase -l";
         }
       ];
       nixpkgs = [
         { type = "gitsvn";
-          update = "git checkout official && git svn fetch && git svn rebase -l && git checkout master && git merge official";
+          update = "git checkout master && git svn fetch && git svn rebase -l";
         }
       ];
     };
