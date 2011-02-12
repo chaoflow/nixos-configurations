@@ -48,17 +48,9 @@ Software
 - browser: firefox with vimperator
 
 
-Production ready changes enter the official nixos repos. For evaluation and
-some hacks I use my own repos:
 
-- nixos: https://github.com/chaoflow/nixos
-- nixpkgs: https://github.com/chaoflow/nixpkgs
 
-They both have a master branch with my changes and an official branch
-corresponding to the official svn repos' trunk at the last point I synced.
 
-XXX: It would be great to have one official git mirror that is synced either
-via svn hooks from the svn server or via cron job.
 
 
 TODO
