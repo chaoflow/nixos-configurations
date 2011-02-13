@@ -25,7 +25,8 @@
         "fbcon"
         "i915"
 
-        # needed for setting ondemand governor in next stage (see postBootCommands)
+        # needed for setting ondemand governor in next stage
+        # (see postBootCommands)
         "acpi-cpufreq"
         "cpufreq-ondemand"
       ];
@@ -78,21 +79,29 @@
       pkgs.bc
       pkgs.cpufrequtils
       pkgs.ddrescue
+      pkgs.emacs
+      pkgs.emacs23Packages.org
       pkgs.file
       pkgs.gitFull
+      pkgs.gnupg
       pkgs.gnupg1orig
       pkgs.htop
       pkgs.ipython
       pkgs.keychain
       pkgs.links2
+      pkgs.lyx
       pkgs.mailutils
       pkgs.mercurial
       pkgs.mutt
+      pkgs.ncftp
+      pkgs.notmuch
       pkgs.offlineimap
       pkgs.p7zip
       pkgs.parted
+      pkgs.pinentry
       pkgs.powertop
       pkgs.pwgen
+      pkgs.rtorrent
       pkgs.screen
       pkgs.subversion
       pkgs.remind
@@ -108,7 +117,10 @@
       pkgs.firefox36Wrapper
       pkgs.geeqie
       pkgs.rxvt_unicode
+      pkgs.scummvm
       pkgs.vlc
+      pkgs.xfontsel
+      pkgs.xlibs.xev
       pkgs.xlibs.xinput
       pkgs.xlibs.xmessage
       pkgs.xlibs.xmodmap
@@ -196,6 +208,7 @@
   };
 
   nix.maxJobs = 4;
+  # XXX: unused so far
   nixpkgs.config = {
     xkeyboard_config = { extraLayoutPath = "./xkb-layout/chaoflow"; };
   };
@@ -227,11 +240,11 @@
       enable = true;
       extraConfig = ''
         # For all options see ``man 5 postconf``
-        # Take care, empty lines will mess up whitespace removal.
-        # It would be nice if empty lines would not be considered in minimal
-        # leading whitespace analysis, but don't know about further implications.
-        # Also take care not to mix tabs and spaces. Should tabs be treated
-        # like 8 spaces?
+        # Take care, empty lines will mess up whitespace removal.  It would be
+        # nice if empty lines would not be considered in minimal leading
+        # whitespace analysis, but don't know about further implications.  Also
+        # take care not to mix tabs and spaces. Should tabs be treated like 8
+        # spaces?
         #
         # ATTENTION! Will log passwords
         #debug_peer_level = 4
@@ -255,8 +268,9 @@
         #
         # username and password for smtp auth, example content:
         #  <relayhost> <username>:<password>
-        # The <relayhost> is exactly what you specified for relayHost, resp. relayhost.
-        smtp_sasl_password_maps = hash:/etc/nixos/cfg-private/postfix_sasl_passwd
+        # The <relayhost> is exactly what you specified for relayHost, resp.
+        # relayhost.
+        smtp_sasl_password_maps = hash:/etc/nixos/cfg-private/postfix_passwd
         smtp_sasl_security_options = noanonymous
         smtp_sasl_tls_security_options = $smtp_sasl_security_options
         smtp_use_tls = yes
@@ -300,4 +314,3 @@
 
   time.timeZone = "Europe/Berlin";
 }
-
