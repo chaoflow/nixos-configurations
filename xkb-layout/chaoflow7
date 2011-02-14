@@ -12,12 +12,22 @@ xkb_symbols "basic" {
 	// AB the lowest one with letters, above the space bar row
 
 
-	// fixing dead keys
+        //// replacement for the cursor keys
+        key <AD08> { [ i, I, Up, Up ] };
+        key <AC07> { [ j, J, Left, Left ] };
+        key <AC08> { [ k, K, Down, Down ] };
+        key <AC09> { [ l, L, Right, Right ] };
+
+
+	//// fixing dead keys
 	key <AE06> { [ 6, asciicircum, onequarter, dead_circumflex ] };
 
 	// top-left, left of 1
 	//key <TLDE> { [dead_grave, dead_tilde, grave, asciitilde ] };
 	key <TLDE> { [ grave, asciitilde, dead_grave, dead_tilde ] };
+
+	//key <AC11> { [dead_acute, dead_diaeresis, apostrophe, quotedbl ] };
+	key <AC11> { [ apostrophe, quotedbl, dead_acute, dead_diaeresis ] };
 
 
 	//// German umlauts
@@ -39,30 +49,25 @@ xkb_symbols "basic" {
 
 
 	//// Serbian latin consonants
-	// ć
+	// ć on c
 	//key <AB03> { [ c, C, copyright, cent ] };
 	key <AB03> { [ any, any, cacute, Cacute ] };
 
-	// č
+	// č on v
 	//key <AB04> { [ v, V, v, V ] };
 	key <AB04> { [ any, any, ccaron, Ccaron ] };
 
-	// đ
+	// đ on d
 	//key <AC03> { [ d, D, eth, ETH ] };
 	key <AC03> { [ any, any, dstroke, Dstroke ] };
 
-	// ž
+	// ž on z
 	//key <AB01> { [ z, Z, ae, AE ] };
 	key <AB01> { [ any, any, zcaron, Zcaron ] };
 
-	// š
+	// š on s
 	//key <AC02> { [ s, S, ssharp, section ] };
 	key <AC02> { [ any, any, scaron, Scaron ] };
-
-
-	// fixing apostrophe and quotedbl
-	//key <AC11> { [dead_acute, dead_diaeresis, apostrophe, quotedbl ] };
-	key <AC11> { [ apostrophe, quotedbl, dead_acute, dead_diaeresis ] };
 
 
 	//// rescueing some stuff
@@ -87,12 +92,12 @@ xkb_symbols "basic" {
 	// does not exist on a physical US, but DE
 	key <LSGT> { [ dead_acute, dead_diaeresis, Multi_key, any ] }; // right of Shift_L
 
+
 	//// now missing:
 	// dead_cedilla
 	// ae AE
 	// eth ETH
-	// uacute Uacute
-	// oacute Oacute
+
 
 	// for free keys check with: xmodmap -pke
 	// shift alt m is free
