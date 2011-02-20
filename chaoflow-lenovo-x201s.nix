@@ -76,6 +76,9 @@
     # use the default profile.
     systemPackages = [
       pkgs.acpitool
+      pkgs.alsaLib
+      pkgs.alsaPlugins
+      pkgs.alsaUtils
       pkgs.bc
       pkgs.cpufrequtils
       pkgs.ddrescue
@@ -94,7 +97,6 @@
       pkgs.mercurial
       pkgs.mutt
       pkgs.ncftp
-      pkgs.notmuch
       pkgs.offlineimap
       pkgs.p7zip
       pkgs.parted
@@ -113,7 +115,6 @@
       pkgs.zsh
     ];
     x11Packages = [
-      pkgs.awesome
       pkgs.firefox36Wrapper
       pkgs.geeqie
       pkgs.rxvt_unicode
@@ -299,9 +300,10 @@
       };
       enable = true;
       exportConfiguration = true;
-      # XXX: extend xserver.nix to support full path to keymap (layoutPath)
-      #      copy to /etc/static/X11/xkb/symbols and set basename as layout
-      layout = "chaoflow";
+      # custom is set in ./bin/init_keyboard.sh via .xsession with the
+      # advantage of not breaking X in case the layout did not make it into the
+      # newest profile generation
+      layout = "us";
       videoDrivers = [ "intel" ];
       xkbModel = "thinkpad60";
     };
