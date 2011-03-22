@@ -179,8 +179,6 @@
 
   installer = {
     repos = {
-      # this needs gitsvn support, currently only in my branch:
-      # https://github.com/chaoflow/nixos
       nixos = [
         { type = "gitsvn";
           update = "git checkout master && git svn fetch && git svn rebase -l";
