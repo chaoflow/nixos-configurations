@@ -82,44 +82,30 @@
       pkgs.bc
       pkgs.cpufrequtils
       pkgs.ddrescue
-      pkgs.emacs
-      pkgs.emacs23Packages.org
       pkgs.file
       pkgs.gitFull
-      pkgs.gnupg
-      pkgs.gnupg1orig
       pkgs.htop
-      pkgs.ipython
       pkgs.keychain
       pkgs.links2
-      pkgs.lyx
       pkgs.mailutils
       pkgs.mercurial
-      pkgs.mutt
       pkgs.ncftp
-      pkgs.offlineimap
       pkgs.p7zip
       pkgs.parted
       pkgs.pinentry
       pkgs.powertop
       pkgs.pwgen
-      pkgs.rtorrent
       pkgs.screen
       pkgs.subversion
-      pkgs.remind
       pkgs.unrar
       pkgs.unzip
-      pkgs.vim_configurable
+      pkgs.vim
       pkgs.wget
       pkgs.w3m
       pkgs.zsh
     ];
     x11Packages = [
-      pkgs.firefox36Wrapper
-      pkgs.geeqie
       pkgs.rxvt_unicode
-      pkgs.scummvm
-      pkgs.vlc
       pkgs.xfontsel
       pkgs.xlibs.xev
       pkgs.xlibs.xinput
