@@ -84,6 +84,7 @@
       pkgs.ddrescue
       pkgs.file
       pkgs.gitFull
+      pkgs.gnupg
       pkgs.htop
       pkgs.keychain
       pkgs.links2
