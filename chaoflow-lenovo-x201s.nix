@@ -163,20 +163,20 @@
     defaultLocale = "en_US.UTF-8";
   };
 
-  installer = {
-    repos = {
-      nixos = [
-        { type = "gitsvn";
-          update = "git checkout master && git svn fetch && git svn rebase -l";
-        }
-      ];
-      nixpkgs = [
-        { type = "gitsvn";
-          update = "git checkout master && git svn fetch && git svn rebase -l";
-        }
-      ];
-    };
-  };
+  # installer = {
+  #   repos = {
+  #     nixos = [
+  #       { type = "gitsvn";
+  #         update = "git checkout master && git svn fetch && git svn rebase -l";
+  #       }
+  #     ];
+  #     nixpkgs = [
+  #       { type = "gitsvn";
+  #         update = "git checkout master && git svn fetch && git svn rebase -l";
+  #       }
+  #     ];
+  #   };
+  # };
 
   networking = {
     domain = "chaoflow.net";
