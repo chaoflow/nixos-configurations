@@ -11,7 +11,6 @@
     #"${modulesPath}/profiles/base.nix"
     #XXX: should be turned into a networking enable option (see 3945.nix)?
     "${modulesPath}/hardware/network/intel-6000.nix"
-#   "${modulesPath}/services/networking/wicd.nix"
   ];
 
   boot = {
@@ -181,7 +180,6 @@
 
   networking = {
     domain = "chaoflow.net";
-    enableWLAN = true;
     # hardcode domain name
     extraHosts = "127.0.0.1 eve.chaoflow.net eve";
     firewall = {
@@ -189,8 +187,7 @@
     };
     hostName = "eve";
     interfaceMonitor.enable = false; # Watch for plugged cable.
-    # for some reason udev renames wlan0 to wlan1
-    WLANInterface = "wlan1";
+    wicd.enable = true;
   };
 
   nix.maxJobs = 4;
@@ -268,7 +265,6 @@
     };
 
     ttyBackgrounds.enable = false;
-    #wicd.enable = true;
 
     xserver = {
       autorun = true;
