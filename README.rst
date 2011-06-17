@@ -38,18 +38,29 @@ lspci::
   ff:02.2 Host bridge: Intel Corporation Core Processor Reserved (rev 02)
   ff:02.3 Host bridge: Intel Corporation Core Processor Reserved (rev 02)
 
+
 Software
 --------
 
 - display manager: slim
 - window manager: awesome
-- mailing: mutt, postfix, offlineimap
-- calendar: remind, wyrd (not yet)
-- browser: firefox with vimperator
+- mailing: postfix, offlineimap, notmuch, emacs
+- calendar: emacs, orgmode
+- browser: firefox with vimperator, conkeror
 
 
+FAQ
+---
 
+Q: How can I get a shell in an nix build environment?
+A: "exit 1" in the corresponding phase + nix-env -K
 
+1. "exit 1" in the corresponding phase
+2. nix-env -K <package> -> will print the temp dir that is left over
+
+or:
+
+nix-build -K -A emacs23Packages.org /etc/nixos/nixpkgs/default.nix
 
 
 
