@@ -31,7 +31,7 @@
         "cpufreq-ondemand"
       ];
     };
-    kernelPackages = pkgs.linuxPackages_2_6_37;
+    kernelPackages = pkgs.linuxPackages_2_6_39;
     kernelModules = [
       "kvm-intel"
     ];
