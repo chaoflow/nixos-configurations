@@ -138,9 +138,9 @@
     { mountPoint = "/home";
       label = "home";
     }
-    { mountPoint = "/mnt/ubuntu";
-      label = "ubuntu";
-      options = "noauto";
+    { mountPoint = "/tmp";
+      label = "tmp";
+      fsType = "tmpfs";
     }
   ];
 
