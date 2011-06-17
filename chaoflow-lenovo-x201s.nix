@@ -84,6 +84,7 @@
       pkgs.file
       pkgs.gitFull
       pkgs.gnupg
+      pkgs.gnupg1
       pkgs.htop
       pkgs.keychain
       pkgs.links2
