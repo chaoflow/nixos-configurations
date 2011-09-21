@@ -140,8 +140,9 @@
       label = "home";
     }
     { mountPoint = "/tmp";
-      label = "tmp";
+      device = "tmpfs";
       fsType = "tmpfs";
+      options = "nosuid,nodev,relatime";
     }
   ];
 
