@@ -87,7 +87,7 @@
       pkgs.alsaPlugins
       pkgs.alsaUtils
       pkgs.bc
-      pkgs.cpufrequtils
+      #pkgs.cpufrequtils
       pkgs.ddrescue
       pkgs.file
       pkgs.gitFull
