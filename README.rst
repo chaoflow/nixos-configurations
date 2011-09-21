@@ -49,6 +49,40 @@ Software
 - browser: firefox with vimperator, conkeror
 
 
+Dealing with non-NixOS builds
+-----------------------------
+
+NixOS does not have ``/usr``, instead there are profiles.
+
+You can define environments_, and use them to create profiles::
+
+    $ nix-env -p $NIX_USER_PROFILE_DIR/py27 -i py27env
+
+The same, but using a wrapper_::
+
+    $ pnix-env py27 -i py27env
+
+To use the environment, I use `another wrapper`_::
+
+    $ py27env python bootstrap.py
+    $ py27env python ./bin/buildout
+
+It can also be sourced::
+
+    $ source ~/bin/py27env
+
+.. _environments: https://github.com/chaoflow/skel/blob/master/.nixpkgs/config.nix
+.. _wrapper: https://github.com/chaoflow/skel/blob/master/bin/pnix-env
+.. _`another wrapper`: https://github.com/chaoflow/skel/blob/master/bin/py27env
+
+Advantages
+~~~~~~~~~~
+- rollback in case something is broken
+- possibility for having dedicated build environments
+- Packages that search things in ``/usr`` still won't work, but you
+  can use one such profile and link it to ``/usr``. However, better
+  would be to patch the offending packages.
+
 FAQ
 ---
 
