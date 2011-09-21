@@ -193,6 +193,7 @@
     # hardcode domain name
     extraHosts = "127.0.0.1 eve.chaoflow.net eve";
     firewall = {
+      allowedTCPPorts = [ 80 ];
       enable = true;
     };
     hostName = "eve";
@@ -222,6 +223,10 @@
 #  '';
   services = {
     acpid.enable = true;
+    httpd = {
+      enable = false;
+      enableUserDir = true;
+    };
     locate.enable = true;
     # Add the NixOS Manual on virtual console 8
     nixosManual.showManual = true;
