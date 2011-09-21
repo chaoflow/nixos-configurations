@@ -18,7 +18,14 @@
       kernelModules = [
         # root fs
         "ahci"
+        "dm-crypt"
         "ext4"
+        "fpu"
+        "aesni-intel"
+        "xts"
+        "arc4"
+        "ecb"
+        "sha1"
 
         # proper console asap
         "fbcon"
@@ -29,6 +36,7 @@
         "acpi-cpufreq"
         "cpufreq-ondemand"
       ];
+      luksRoot = "/dev/sda2";
     };
     kernelPackages = pkgs.linuxPackages_2_6_39;
     kernelModules = [
@@ -125,7 +133,10 @@
     # Mount the root file system
     #
     { mountPoint = "/";
-      label = "nixos";
+      device = "/dev/mapper/eve-nixos";
+    } {
+      mountPoint = "/boot";
+      device = "/dev/sda1";
     }
 
     # Copy & Paste & Uncomment & Modify to add any other file system.
@@ -136,9 +147,6 @@
     #   fsType = "ext3";      # the type of the partition.
     #   options = "data=journal";
     # }
-    { mountPoint = "/home";
-      label = "home";
-    }
     { mountPoint = "/tmp";
       device = "tmpfs";
       fsType = "tmpfs";
