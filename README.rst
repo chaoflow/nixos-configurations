@@ -71,9 +71,12 @@ It can also be sourced::
 
     $ source ~/bin/py27env
 
+More on this you can find here_.
+
 .. _environments: https://github.com/chaoflow/skel/blob/master/.nixpkgs/config.nix
 .. _wrapper: https://github.com/chaoflow/skel/blob/master/bin/pnix-env
 .. _`another wrapper`: https://github.com/chaoflow/skel/blob/master/bin/py27env
+.. _here: http://wiki.nixos.org/wiki/Howto_keep_multiple_packages_up_to_date_at_once
 
 Advantages
 ^^^^^^^^^^
