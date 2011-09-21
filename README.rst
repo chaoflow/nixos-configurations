@@ -76,7 +76,8 @@ It can also be sourced::
 .. _`another wrapper`: https://github.com/chaoflow/skel/blob/master/bin/py27env
 
 Advantages
-~~~~~~~~~~
+^^^^^^^^^^
+
 - rollback in case something is broken
 - possibility for having dedicated build environments
 - Packages that search things in ``/usr`` still won't work, but you
