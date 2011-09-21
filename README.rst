@@ -70,27 +70,20 @@ TODO
 - create config dir in nixos svn and point to github
 - suspend and hibernate vie Fn-<key>, used to work via awesome mappings
 - (semi-)automatic backup
-- mutt + gnupg
-- vim + plugins
-- wyrd
-- more fonts
 - zsh
-- understand the difference between a packag, derivation and attribute. How does nix-env -i <foo> relate to pkgs.fooBar?
-- ipython for each python version
+- understand the difference between a package, derivation and attribute. How does nix-env -i <foo> relate to pkgs.fooBar?
 - hibernate on very low battery
 - modularize config so generic parts can be reused by others directly
 - grub menu: indicate number of profile used as default, eg. in brackets
 
 Issues
 ^^^^^^
-- awesome cannot set background but feh is in system-path
 - sudo does not remember me after system restart
 - sudo nixos-rebuild switch complains about locales
 - rxvt-unicode terminfo not available (temp solution: link current derivation to ~/.terminfo)
 - zsh paths are messed up, looks like /etc/bashrc and profile should be split
 - anacron or is it somehow else ensured that commands are run, if powered off at given time
 - collisions in system-environment, priorization?
-- mutt expects /usr/bin/sendmail (bypassed via .muttrc, not how it is supposed to be)
 - mail (from mailutils) expects /usr/bin/sendmail
 - postfix issues several warnings
 - postfix, received header (Local time zone must be set--see zic manual page)
