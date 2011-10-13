@@ -3,7 +3,7 @@
 # page of configuration.nix or at the last chapter of the manual available
 # on the virtual console 8 (Alt+F8).
 
-{config, pkgs, modulesPath, ...}:
+{ config, pkgs, modulesPath, ... }:
 
 {
   require = [
