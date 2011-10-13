@@ -201,6 +201,7 @@
     wicd.enable = true;
   };
 
+  nix.extraOptions = "build-cores = 4";
   nix.maxJobs = 4;
   # XXX: unused so far
   nixpkgs.config = {
