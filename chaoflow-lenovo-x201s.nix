@@ -38,7 +38,7 @@
       ];
       luksRoot = "/dev/sda2";
     };
-    kernelPackages = pkgs.linuxPackages_2_6_39;
+    kernelPackages = pkgs.linuxPackages_3_0_powertop;
     kernelModules = [
       "kvm-intel"
     ];
