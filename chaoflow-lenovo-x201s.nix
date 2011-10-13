@@ -232,8 +232,7 @@
       enableUserDir = true;
     };
     locate.enable = true;
-    # Add the NixOS Manual on virtual console 8
-    nixosManual.showManual = true;
+    nixosManual.showManual = false;
     openssh.enable = true;
     printing.enable = true;
 
