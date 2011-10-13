@@ -209,6 +209,10 @@
 
   powerManagement.enable = true;
 
+  security.pam.loginLimits = [
+    { domain = "@audio"; item = "rtprio"; type = "-"; value = "99"; }
+  ];
+
 #  security.sudo.configFile = ''
 ## Don't edit this file. Set nixos option security.sudo.configFile instead
 #
