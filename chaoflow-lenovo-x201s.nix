@@ -81,48 +81,48 @@
 
     # XXX: still not sure when it is better to put a package here and when to
     # use the default profile.
-    systemPackages = [
-      pkgs.acpitool
-      pkgs.alsaLib
-      pkgs.alsaPlugins
-      pkgs.alsaUtils
-      pkgs.bc
-      #pkgs.cpufrequtils
-      pkgs.ddrescue
-      pkgs.file
-      pkgs.gitFull
-      pkgs.gnupg
-      pkgs.gnupg1
-      pkgs.htop
-      pkgs.keychain
-      pkgs.links2
-      pkgs.mailutils
-      pkgs.mercurial
-      pkgs.ncftp
-      pkgs.p7zip
-      pkgs.parted
-      pkgs.pinentry
-      pkgs.powertop
-      pkgs.pwgen
-      pkgs.screen
-      pkgs.subversion
-      pkgs.unrar
-      pkgs.unzip
-      pkgs.vim
-      pkgs.wget
-      pkgs.w3m
-      pkgs.zsh
+    systemPackages = with pkgs; [
+      acpitool
+      alsaLib
+      alsaPlugins
+      alsaUtils
+      bc
+      cpufrequtils
+      ddrescue
+      file
+      gitFull
+      gnupg
+      gnupg1
+      htop
+      keychain
+      links2
+      mailutils
+      mercurial
+      ncftp
+      p7zip
+      parted
+      pinentry
+      powertop
+      pwgen
+      screen
+      subversion
+      unrar
+      unzip
+      vim
+      wget
+      w3m
+      zsh
     ];
-    x11Packages = [
-      pkgs.rxvt_unicode
-      pkgs.xfontsel
-      pkgs.xlibs.xev
-      pkgs.xlibs.xinput
-      pkgs.xlibs.xmessage
-      pkgs.xlibs.xmodmap
+    x11Packages = with pkgs; [
+      rxvt_unicode
+      xfontsel
+      xlibs.xev
+      xlibs.xinput
+      xlibs.xmessage
+      xlibs.xmodmap
       # would prefer slock, but need to package it first
-      pkgs.xlockmore
-      pkgs.xpdf
+      xlockmore
+      xpdf
     ];
   };
 
