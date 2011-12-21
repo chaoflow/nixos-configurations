@@ -79,6 +79,12 @@
     # that.
     #pathsToLink = ["include"];
 
+    # shellInit = ''
+    #   export GEM_PATH=/var/run/current-system/sw/${pkgs.ruby.gemPath}
+    #   export RUBYLIB=/var/run/current-system/sw/lib
+    #   export RUBYOPT=rubygems
+    # '';
+
     # XXX: still not sure when it is better to put a package here and when to
     # use the default profile.
     systemPackages = with pkgs; [
