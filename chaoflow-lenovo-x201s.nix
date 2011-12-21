@@ -240,94 +240,88 @@
 ## Users in the "wheel" group can do anything.
 #%wheel ALL=(ALL) SETENV: ALL
 #  '';
-  services = {
-    acpid.enable = true;
-    httpd = {
-      adminAddr = "flo@chaoflow.net";
-      enable = false;
-      enableUserDir = true;
-    };
-    locate.enable = true;
-    nixosManual.showManual = false;
-    openssh.enable = true;
-    printing.enable = true;
 
-    postfix = {
-      destination = [ "localhost" "eve.chaoflow.net" ];
-      enable = true;
-      extraConfig = ''
-        # For all options see ``man 5 postconf``
-        # Take care, empty lines will mess up whitespace removal.  It would be
-        # nice if empty lines would not be considered in minimal leading
-        # whitespace analysis, but don't know about further implications.  Also
-        # take care not to mix tabs and spaces. Should tabs be treated like 8
-        # spaces?
-        #
-        # ATTENTION! Will log passwords
-        #debug_peer_level = 4
-        #debug_peer_list = tesla.chaoflow.net
-        inet_interfaces = loopback-only
-        #
-        # the nixos config option does not allow to specify a port, beware:
-        # small 'h' in contrast to the config option with capital 'H'
-        relayhost = [tesla.chaoflow.net]:submission
-        #
-        #XXX: needs server certificate checking
-        #smtp_enforce_tls = yes
-        #
-        # postfix generic map example content:
-        #   user@local.email user@public.email
-        # Run ``# postmap hash:/etc/nixos/cfg-private/postfix_generic_map``
-        # after changing it.
-        smtp_generic_maps = hash:/etc/nixos/cfg-private/postfix_generic_map
-        smtp_sasl_auth_enable = yes
-        smtp_sasl_mechanism_filter = plain, login
-        #
-        # username and password for smtp auth, example content:
-        #  <relayhost> <username>:<password>
-        # The <relayhost> is exactly what you specified for relayHost, resp.
-        # relayhost.
-        smtp_sasl_password_maps = hash:/etc/nixos/cfg-private/postfix_passwd
-        smtp_sasl_security_options = noanonymous
-        smtp_sasl_tls_security_options = $smtp_sasl_security_options
-        smtp_use_tls = yes
-      '';
-      hostname = "eve.chaoflow.net";
-      origin = "eve.chaoflow.net";
-      postmasterAlias = "root";
-      rootAlias = "cfl";
-    };
-
-    ttyBackgrounds.enable = false;
-
-    xserver = {
-      autorun = true;
-      # no desktop manager, no window manager configured here. This
-      # results in only one session *custom* for slim which executes
-      # ~/.xsession. See:
-      # https://github.com/chaoflow/chaoflow.skel.home/blob/master/.xsession
-      desktopManager.xterm.enable = false;
-      displayManager = {
-        slim = {
-          defaultUser = "cfl";
-          hideCursor = true;
-        };
+  services.acpid.enable = true;
+  services.httpd = {
+    adminAddr = "flo@chaoflow.net";
+    enable = false;
+    enableUserDir = true;
+  };
+  services.locate.enable = true;
+  services.nixosManual.showManual = false;
+  services.openssh.enable = true;
+  services.printing.enable = true;
+  services.postfix = {
+    destination = [ "localhost" "eve.chaoflow.net" ];
+    enable = true;
+    extraConfig = ''
+      # For all options see ``man 5 postconf``
+      # Take care, empty lines will mess up whitespace removal.  It would be
+      # nice if empty lines would not be considered in minimal leading
+      # whitespace analysis, but don't know about further implications.  Also
+      # take care not to mix tabs and spaces. Should tabs be treated like 8
+      # spaces?
+      #
+      # ATTENTION! Will log passwords
+      #debug_peer_level = 4
+      #debug_peer_list = tesla.chaoflow.net
+      inet_interfaces = loopback-only
+      #
+      # the nixos config option does not allow to specify a port, beware:
+      # small 'h' in contrast to the config option with capital 'H'
+      relayhost = [tesla.chaoflow.net]:submission
+      #
+      #XXX: needs server certificate checking
+      #smtp_enforce_tls = yes
+      #
+      # postfix generic map example content:
+      #   user@local.email user@public.email
+      # Run ``# postmap hash:/etc/nixos/cfg-private/postfix_generic_map``
+      # after changing it.
+      smtp_generic_maps = hash:/etc/nixos/cfg-private/postfix_generic_map
+      smtp_sasl_auth_enable = yes
+      smtp_sasl_mechanism_filter = plain, login
+      #
+      # username and password for smtp auth, example content:
+      #  <relayhost> <username>:<password>
+      # The <relayhost> is exactly what you specified for relayHost, resp.
+      # relayhost.
+      smtp_sasl_password_maps = hash:/etc/nixos/cfg-private/postfix_passwd
+      smtp_sasl_security_options = noanonymous
+      smtp_sasl_tls_security_options = $smtp_sasl_security_options
+      smtp_use_tls = yes
+    '';
+    hostname = "eve.chaoflow.net";
+    origin = "eve.chaoflow.net";
+    postmasterAlias = "root";
+    rootAlias = "cfl";
+  };
+  services.ttyBackgrounds.enable = false;
+  services.xserver = {
+    autorun = true;
+    # no desktop manager, no window manager configured here. This
+    # results in only one session *custom* for slim which executes
+    # ~/.xsession. See:
+    # https://github.com/chaoflow/chaoflow.skel.home/blob/master/.xsession
+    desktopManager.xterm.enable = false;
+    displayManager = {
+      slim = {
+        defaultUser = "cfl";
+        hideCursor = true;
       };
-      enable = true;
-      exportConfiguration = true;
-      # custom is set in ./bin/init_keyboard.sh via .xsession with the
-      # advantage of not breaking X in case the layout did not make it into the
-      # newest profile generation
-      layout = "us";
-      videoDrivers = [ "intel" ];
-      xkbModel = "thinkpad60";
     };
+    enable = true;
+    exportConfiguration = true;
+    # custom is set in ./bin/init_keyboard.sh via .xsession with the
+    # advantage of not breaking X in case the layout did not make it into the
+    # newest profile generation
+    layout = "us";
+    videoDrivers = [ "intel" ];
+    xkbModel = "thinkpad60";
   };
 
-  swapDevices = [
-    # List swap partitions that are mounted at boot time.
-    { label = "swap"; }
-  ];
+  # List swap partitions that are mounted at boot time.
+  swapDevices = [{ label = "swap"; }];
 
   time.timeZone = "Europe/Berlin";
 }
