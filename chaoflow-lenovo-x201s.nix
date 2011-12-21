@@ -64,7 +64,7 @@
     '';
 
     # major:minor number of my swap device, fully lvm-based system
-    resumeDevice = "254:0";
+    resumeDevice = "254:1";
 
     # disabled for fbcon and i915 to kick in (see kernelModules above)
     vesa = false;
