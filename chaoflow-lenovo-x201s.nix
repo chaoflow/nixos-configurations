@@ -215,6 +215,8 @@
     gc-keep-derivations = true
   '';
   nix.maxJobs = 4;
+  nix.useChroot = true;
+
   # XXX: unused so far
   nixpkgs.config = {
     xkeyboard_config = { extraLayoutPath = "./xkb-layout/chaoflow"; };
