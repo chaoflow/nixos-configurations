@@ -197,7 +197,9 @@
   networking = {
     domain = "chaoflow.net";
     # hardcode domain name
-    extraHosts = "127.0.0.1 eve.chaoflow.net eve";
+    # extraHosts = ''
+    #   127.0.0.1 eve.chaoflow.net eve
+    # '';
     firewall = {
       allowedTCPPorts = [ 80 ];
       enable = true;
