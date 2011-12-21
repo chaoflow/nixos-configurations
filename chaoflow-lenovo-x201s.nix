@@ -243,6 +243,7 @@
   services = {
     acpid.enable = true;
     httpd = {
+      adminAddr = "flo@chaoflow.net";
       enable = false;
       enableUserDir = true;
     };
