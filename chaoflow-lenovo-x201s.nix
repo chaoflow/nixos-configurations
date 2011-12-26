@@ -36,7 +36,7 @@
         "acpi-cpufreq"
         "cpufreq-ondemand"
       ];
-      luksRoot = "/dev/sda2";
+      luksRoot = "/dev/sda3";
     };
     kernelPackages = pkgs.linuxPackages_3_0_powertop;
     kernelModules = [
@@ -64,7 +64,7 @@
     '';
 
     # major:minor number of my swap device, fully lvm-based system
-    resumeDevice = "254:1";
+    #resumeDevice = "254:1";
 
     # disabled for fbcon and i915 to kick in (see kernelModules above)
     vesa = false;
@@ -93,7 +93,9 @@
       alsaPlugins
       alsaUtils
       bc
+      btrfsProgs
       cpufrequtils
+      cryptsetup
       ddrescue
       file
       gitFull
@@ -144,6 +146,9 @@
       mountPoint = "/boot";
       device = "/dev/sda1";
     }
+    #{ mountPoint = "/";
+    #  device = "/dev/sda2";
+    #}
 
     # Copy & Paste & Uncomment & Modify to add any other file system.
     #
@@ -215,7 +220,7 @@
     gc-keep-derivations = true
   '';
   nix.maxJobs = 4;
-  nix.useChroot = true;
+  #nix.useChroot = true;
 
   # XXX: unused so far
   nixpkgs.config = {
@@ -304,11 +309,9 @@
     # ~/.xsession. See:
     # https://github.com/chaoflow/chaoflow.skel.home/blob/master/.xsession
     desktopManager.xterm.enable = false;
-    displayManager = {
-      slim = {
-        defaultUser = "cfl";
-        hideCursor = true;
-      };
+    displayManager.slim = {
+      defaultUser = "cfl";
+      hideCursor = true;
     };
     enable = true;
     exportConfiguration = true;
@@ -321,7 +324,7 @@
   };
 
   # List swap partitions that are mounted at boot time.
-  swapDevices = [{ label = "swap"; }];
+  #swapDevices = [{ label = "swap"; }];
 
   time.timeZone = "Europe/Berlin";
 }
