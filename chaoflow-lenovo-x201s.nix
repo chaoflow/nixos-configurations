@@ -101,6 +101,8 @@
       gitFull
       gnupg
       gnupg1
+      haskellPackages.ghc
+      haskellPackages.haskellPlatform
       htop
       keychain
       links2
@@ -122,6 +124,9 @@
       zsh
     ];
     x11Packages = with pkgs; [
+      haskellPackages.xmonad
+      haskellPackages.xmonadContrib
+      haskellPackages.xmonadExtras
       rxvt_unicode
       xfontsel
       xlibs.xev
