@@ -36,7 +36,7 @@
       ];
       luksRoot = "/dev/sda3";
     };
-    kernelPackages = pkgs.linuxPackages_3_0_powertop;
+    kernelPackages = pkgs.linuxPackages_3_1_powertop;
     blacklistedKernelModules = [
       "pcspkr"
     ];
