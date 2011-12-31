@@ -211,7 +211,7 @@
     gc-keep-derivations = true
   '';
   nix.maxJobs = 4;
-  #nix.useChroot = true;
+  nix.useChroot = true;
 
   # XXX: unused so far
   nixpkgs.config = {
