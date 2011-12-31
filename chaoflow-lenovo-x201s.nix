@@ -37,6 +37,9 @@
       luksRoot = "/dev/sda3";
     };
     kernelPackages = pkgs.linuxPackages_3_0_powertop;
+    blacklistedKernelModules = [
+      "pcspkr"
+    ];
     kernelModules = [
       "kvm-intel"
     ];
