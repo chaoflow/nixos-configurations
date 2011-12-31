@@ -220,6 +220,8 @@
 
   powerManagement.enable = true;
 
+  users.defaultUserShell = "/var/run/current-system/sw/bin/zsh";
+
   security.pam.loginLimits = [
     { domain = "@audio"; item = "rtprio"; type = "-"; value = "99"; }
   ];
