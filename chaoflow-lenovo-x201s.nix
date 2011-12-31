@@ -7,8 +7,6 @@
 
 {
   require = [
-    # from hardware-configuration
-    #"${modulesPath}/profiles/base.nix"
     #XXX: should be turned into a networking enable option (see 3945.nix)?
     "${modulesPath}/hardware/network/intel-6000.nix"
   ];
@@ -188,21 +186,6 @@
     consoleKeyMap = "us";
     defaultLocale = "en_US.UTF-8";
   };
-
-  # installer = {
-  #   repos = {
-  #     nixos = [
-  #       { type = "gitsvn";
-  #         update = "git checkout master && git svn fetch && git svn rebase -l";
-  #       }
-  #     ];
-  #     nixpkgs = [
-  #       { type = "gitsvn";
-  #         update = "git checkout master && git svn fetch && git svn rebase -l";
-  #       }
-  #     ];
-  #   };
-  # };
 
   networking = {
     domain = "chaoflow.net";
