@@ -7,7 +7,6 @@
 
 {
   require = [
-    #XXX: should be turned into a networking enable option (see 3945.nix)?
     "${modulesPath}/hardware/network/intel-6000.nix"
   ];
 
@@ -37,12 +36,8 @@
       luksRoot = "/dev/sda3";
     };
     kernelPackages = pkgs.linuxPackages_3_1_powertop;
-    blacklistedKernelModules = [
-      "pcspkr"
-    ];
-    kernelModules = [
-      "kvm-intel"
-    ];
+    blacklistedKernelModules = [ "pcspkr" ]; # thx Jonas!
+    kernelModules = [ "kvm-intel" ];
 
     # grub 2 can boot from lvm, not sure whether version 2 is default
     loader.grub = {
