@@ -89,10 +89,10 @@
       alsaPlugins
       alsaUtils
       bc
-      btrfsProgs
       cpufrequtils
       cryptsetup
       ddrescue
+      emacs
       file
       gitFull
       gnupg
@@ -105,13 +105,22 @@
       mailutils
       mercurial
       ncftp
+      netcat
+      nmap
+      notmuch
+      emacs23Packages.org
       p7zip
       parted
       pinentry
       powertop
       pwgen
       screen
+      sdparm
+      stdmanpages
       subversion
+      tcpdump
+      telnet
+      units
       unrar
       unzip
       vim
@@ -124,6 +133,8 @@
       haskellPackages.xmonadContrib
       haskellPackages.xmonadExtras
       rxvt_unicode
+      scrot
+      stalonetray
       xfontsel
       xlibs.xev
       xlibs.xinput
