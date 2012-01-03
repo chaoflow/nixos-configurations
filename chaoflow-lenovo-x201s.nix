@@ -191,13 +191,13 @@
     # extraHosts = ''
     #   127.0.0.1 eve.chaoflow.net eve
     # '';
+    enableWLAN = true;
     firewall = {
       allowedTCPPorts = [ 80 ];
       enable = true;
     };
     hostName = "eve";
     interfaceMonitor.enable = false; # Watch for plugged cable.
-    wicd.enable = true;
   };
 
   nix.extraOptions = ''
