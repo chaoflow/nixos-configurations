@@ -28,9 +28,17 @@
   require = [
     "${modulesPath}/hardware/network/intel-6000.nix"
   ];
-  # proper console asap
-  boot.initrd.kernelModules = [ "fbcon" "i915" ];
-  # disabled for fbcon and i915 to kick in
+  boot.initrd.kernelModules = [
+    # rootfs, hardware specific
+    "ahci"
+    "aesni-intel"
+    # proper console asap
+    "fbcon"
+    "i915"
+  ];
+
+  # disabled for fbcon and i915 to kick in or to disable the kernelParams
+  # XXX: investigate
   boot.vesa = false;
   nix.extraOptions = ''
     build-cores = 4

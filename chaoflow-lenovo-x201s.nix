@@ -12,18 +12,8 @@
 
   boot = {
     initrd = {
-      kernelModules = [
-        # root fs
-        "ahci"
-        "dm-crypt"
-        "ext4"
-        "fpu"
-        "aesni-intel"
-        "xts"
-        "arc4"
-        "ecb"
-        "sha1"
-      ];
+      # root fs
+      kernelModules = [ "dm-crypt" "ext4" "xts" ];
       luksRoot = "/dev/sda3";
     };
     kernelPackages = pkgs.linuxPackages_3_0_powertop;
