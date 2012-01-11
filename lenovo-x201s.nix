@@ -1,4 +1,4 @@
-{ config, pkgs, modulesPath, ...}:
+{ modulesPath, ...}:
 
 # % lspci 
 # 00:00.0 Host bridge: Intel Corporation Core Processor DRAM Controller (rev 02)
@@ -25,9 +25,7 @@
 
 {
   # You may have a different wifi card
-  require = [
-    "${modulesPath}/hardware/network/intel-6000.nix"
-  ];
+  require = [ "${modulesPath}/hardware/network/intel-6000.nix" ];
   boot.initrd.kernelModules = [
     # rootfs, hardware specific
     "ahci"
@@ -37,9 +35,13 @@
     "i915"
   ];
 
+  # XXX: how can we load on-demand for qemu-kvm?
+  boot.kernelModules = [ "kvm-intel" ];
+
   # disabled for fbcon and i915 to kick in or to disable the kernelParams
   # XXX: investigate
   boot.vesa = false;
+
   nix.extraOptions = ''
     build-cores = 4
   '';

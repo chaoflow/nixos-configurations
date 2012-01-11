@@ -3,7 +3,7 @@
 # page of configuration.nix or at the last chapter of the manual available
 # on the virtual console 8 (Alt+F8).
 
-{ config, pkgs, modulesPath, ... }:
+{ pkgs, ... }:
 
 {
   require = [
@@ -18,7 +18,6 @@
     };
     kernelPackages = pkgs.linuxPackages_3_0_powertop;
     blacklistedKernelModules = [ "pcspkr" ]; # no beeping, thx Jonas!
-    kernelModules = [ "kvm-intel" ];
 
     # grub 2 can boot from lvm, not sure whether version 2 is default
     loader.grub = {
