@@ -43,10 +43,10 @@ Software
 --------
 
 - display manager: slim
-- window manager: awesome
+- window manager: xmonad
 - mailing: postfix, offlineimap, notmuch, emacs
 - calendar: emacs, orgmode
-- browser: firefox with vimperator, conkeror
+- browser: conkeror, firefox, chrome
 
 
 Dealing with non-NixOS builds
@@ -105,59 +105,84 @@ nix-build -K -A emacs23Packages.org /etc/nixos/nixpkgs/default.nix
 TODO
 ----
 
-- create config dir in nixos svn and point to github
-- suspend and hibernate vie Fn-<key>, used to work via awesome mappings
+- create config dir in nixos svn and point to github, wait for github
+  migration
+
+- suspend and hibernate vie Fn-<key>, used to work via awesome
+  mappings
+
 - (semi-)automatic backup
-- zsh
-- understand the difference between a package, derivation and attribute. How does nix-env -i <foo> relate to pkgs.fooBar?
+
 - hibernate on very low battery
+
 - modularize config so generic parts can be reused by others directly
+
 - grub menu: indicate number of profile used as default, eg. in brackets
 
 Issues
 ^^^^^^
+- notmuch asks twice for passphrase, probably something about the
+  gpg-agent
+
 - sudo does not remember me after system restart
+
 - sudo nixos-rebuild switch complains about locales
-- rxvt-unicode terminfo not available (temp solution: link current derivation to ~/.terminfo)
-- zsh paths are messed up, looks like /etc/bashrc and profile should be split
-- anacron or is it somehow else ensured that commands are run, if powered off at given time
+
+- rxvt-unicode terminfo not available when sudo
+
+- anacron or is it somehow else ensured that commands are run, if
+  powered off at given time
+
 - collisions in system-environment, priorization?
+
 - mail (from mailutils) expects /usr/bin/sendmail
+
 - postfix issues several warnings
-- postfix, received header (Local time zone must be set--see zic manual page)
+
+- postfix, received header (Local time zone must be set--see zic
+  manual page)
+
 - postfix, verify server certificate
+
 - postfix, check whether it runs chrooted
-- postconf: smtp_sasl_tls_security_options = $var_smtp_sasl_opts ?! manually overwritten
-- rebasing of my branches collides with github: master (current branch) cannot
-  be deleted and pushing with rewriting history is not supported. Maybe merging
-  would be better.
+
+- postconf: smtp_sasl_tls_security_options = $var_smtp_sasl_opts ?!
+  manually overwritten
 
 
 nice to have
 ^^^^^^^^^^^^
-- get pm-suspend-hybrid to work, I think it does hibernate but then only
-  suspends. Good if you forget that your laptop is in suspend for a couple of
-  days. On the other hand, hibernate and resume from it is fast enough. so
-  basically no need for suspend.
+- get pm-suspend-hybrid to work, I think it does hibernate but then
+  only suspends. Good if you forget that your laptop is in suspend for
+  a couple of days. On the other hand, hibernate and resume from it is
+  fast enough. so basically no need for suspend.
+
 - pm-powersave true|false support?
+
 - package qbittorrent
+
 - how could profiles be tested? including then packaged vim plugins,
-  zc.buildouts depending on them, ... Would be great to build a new profile and
-  automatically test it
-- can system profiles be labelled so they show up more meaningful in grub?
-- mutt colors
-- wicd
-- replace rsyslog with something that buffers and only rarely writes to disk
-  (old, from ubuntu)
-- check sata link, host1 does not like min_power or something sets them to
-  max_performance again (old, from ubuntu)
+  zc.buildouts depending on them, ... Would be great to build a new
+  profile and automatically test it
+
+- can system profiles be labelled so they show up more meaningful in
+  grub?
+
+- replace rsyslog with something that buffers and only rarely writes
+  to disk (old, from ubuntu)
+
+- check sata link, host1 does not like min_power or something sets
+  them to max_performance again (old, from ubuntu)
+
 - console keymap (alt, ctrl on caps)
-- visual beep / no beep
-- mail rely should pretend mails coming via submission are locally generated to
-  hide ip of the client sending it (server issue, not nixos related)
+
+- mail rely should pretend mails coming via submission are locally
+  generated to hide ip of the client sending it (server issue, not
+  nixos related)
 
 
-nix store optimise reports far less savings than achieved::
+- nix store optimise reports far less savings than achieved::
+
   [root@eve:~]# df -h            
   Filesystem            Size  Used Avail Use% Mounted on
   /dev/mapper/eve-nixos
@@ -204,5 +229,4 @@ A big thank you for patient support via irc and mail:
 - Micheal Raskin
 - Nicolas Pierron
 - Peter Simons
-- Viric
 - Vladimír Čunát
