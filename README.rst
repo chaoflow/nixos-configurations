@@ -105,6 +105,8 @@ nix-build -K -A emacs23Packages.org /etc/nixos/nixpkgs/default.nix
 TODO
 ----
 
+- emacs speedup man pages
+
 - create config dir in nixos svn and point to github, wait for github
   migration
 
