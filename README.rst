@@ -121,6 +121,9 @@ TODO
 
 Issues
 ^^^^^^
+
+- iwconfig wlan0 mode ad-hoc (with >3_0?)
+
 - notmuch asks twice for passphrase, probably something about the
   gpg-agent
 

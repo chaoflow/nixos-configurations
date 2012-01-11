@@ -35,8 +35,8 @@
       ];
       luksRoot = "/dev/sda3";
     };
-    kernelPackages = pkgs.linuxPackages_3_1_powertop;
     blacklistedKernelModules = [ "pcspkr" ]; # thx Jonas!
+    kernelPackages = pkgs.linuxPackages_3_0_powertop;
     kernelModules = [ "kvm-intel" ];
 
     # grub 2 can boot from lvm, not sure whether version 2 is default
