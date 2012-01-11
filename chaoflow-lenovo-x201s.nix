@@ -7,7 +7,7 @@
 
 {
   require = [
-    "${modulesPath}/hardware/network/intel-6000.nix"
+    ./lenovo-x201s.nix
   ];
 
   boot = {
@@ -23,11 +23,6 @@
         "arc4"
         "ecb"
         "sha1"
-
-        # proper console asap
-        "fbcon"
-        "i915"
-
         # needed for setting ondemand governor in next stage
         # (see postBootCommands)
         "acpi-cpufreq"
@@ -61,9 +56,6 @@
 
     # major:minor number of my swap device, fully lvm-based system
     #resumeDevice = "254:1";
-
-    # disabled for fbcon and i915 to kick in (see kernelModules above)
-    vesa = false;
   };
 
   environment = {
@@ -212,11 +204,9 @@
   };
 
   nix.extraOptions = ''
-    build-cores = 4
     gc-keep-outputs = true
     gc-keep-derivations = true
   '';
-  nix.maxJobs = 4;
   nix.useChroot = true;
 
   # XXX: unused so far
@@ -318,8 +308,6 @@
     # advantage of not breaking X in case the layout did not make it into the
     # newest profile generation
     layout = "us";
-    videoDrivers = [ "intel" ];
-    xkbModel = "thinkpad60";
   };
 
   # List swap partitions that are mounted at boot time.
