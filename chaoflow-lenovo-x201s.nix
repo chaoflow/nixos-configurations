@@ -23,10 +23,6 @@
         "arc4"
         "ecb"
         "sha1"
-        # needed for setting ondemand governor in next stage
-        # (see postBootCommands)
-        "acpi-cpufreq"
-        "cpufreq-ondemand"
       ];
       luksRoot = "/dev/sda3";
     };
@@ -46,9 +42,6 @@
     # effective for hosts that are actually connected to something, in my case
     # only host0.
     postBootCommands = ''
-      for x in /sys/devices/system/cpu/*/cpufreq/scaling_governor; do
-        echo ondemand > $x
-      done
       for x in /sys/class/scsi_host/*/link_power_management_policy; do
         echo min_power > $x
       done
