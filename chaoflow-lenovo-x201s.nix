@@ -26,8 +26,8 @@
       ];
       luksRoot = "/dev/sda3";
     };
-    blacklistedKernelModules = [ "pcspkr" ]; # thx Jonas!
     kernelPackages = pkgs.linuxPackages_3_0_powertop;
+    blacklistedKernelModules = [ "pcspkr" ]; # no beeping, thx Jonas!
     kernelModules = [ "kvm-intel" ];
 
     # grub 2 can boot from lvm, not sure whether version 2 is default
