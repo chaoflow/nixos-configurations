@@ -108,7 +108,6 @@
     { domain = "@audio"; item = "rtprio"; type = "-"; value = "99"; }
   ];
 
-  services.acpid.enable = true;
   services.httpd = {
     adminAddr = "flo@chaoflow.net";
     enable = false;
