@@ -7,7 +7,7 @@
 
 {
   require = [
-    ./lenovo-x201s.nix
+    ./hardware.nix
     ./intel-xts-luksroot-sda.nix
     ./filesystems-boot-root-tmptmpfs.nix
     ./nobeep.nix
