@@ -9,6 +9,7 @@
   require = [
     ./lenovo-x201s.nix
     ./intel-xts-luksroot-sda.nix
+    ./filesystems-boot-root-tmptmpfs.nix
     ./nobeep.nix
   ];
 
@@ -45,98 +46,21 @@
     # XXX: still not sure when it is better to put a package here and when to
     # use the default profile.
     systemPackages = with pkgs; [
-      acpitool
-      alsaLib
-      alsaPlugins
-      alsaUtils
-      bc
-      cpufrequtils
-      cryptsetup
-      ddrescue
-      emacs
-      file
-      gitFull
-      gnupg
-      gnupg1
-      haskellPackages.ghc
-      haskellPackages.haskellPlatform
-      htop
-      keychain
-      links2
-      mailutils
-      mercurial
-      ncftp
-      netcat
-      nmap
-      notmuch
-      emacs23Packages.org
-      p7zip
-      parted
-      pinentry
-      powertop
-      pwgen
-      screen
-      sdparm
-      stdmanpages
-      subversion
-      tcpdump
-      telnet
-      units
-      unrar
-      unzip
-      vim
-      wget
-      w3m
-      zsh
+      acpitool alsaLib alsaPlugins alsaUtils bc cpufrequtils
+      cryptsetup ddrescue emacs file gitFull gnupg gnupg1
+      haskellPackages.ghc haskellPackages.haskellPlatform htop
+      keychain links2 mailutils mercurial ncftp netcat nmap notmuch
+      emacs23Packages.org p7zip parted pinentry powertop pwgen screen
+      sdparm stdmanpages subversion tcpdump telnet units unrar unzip
+      vim wget w3m zsh
     ];
     x11Packages = with pkgs; [
-      haskellPackages.xmonad
-      haskellPackages.xmonadContrib
-      haskellPackages.xmonadExtras
-      rxvt_unicode
-      scrot
-      stalonetray
-      xfontsel
-      xlibs.xev
-      xlibs.xinput
-      xlibs.xmessage
-      xlibs.xmodmap
-      # would prefer slock, but need to package it first
-      xlockmore
-      xpdf
+      haskellPackages.xmonad haskellPackages.xmonadContrib
+      haskellPackages.xmonadExtras rxvt_unicode scrot stalonetray
+      xfontsel xlibs.xev xlibs.xinput xlibs.xmessage xlibs.xmodmap
+      xlockmore xpdf
     ];
   };
-
-  # Add file system entries for each partition that you want to see mounted
-  # at boot time.  You can add filesystems which are not mounted at boot by
-  # adding the noauto option.
-  fileSystems = [
-    # Mount the root file system
-    #
-    { mountPoint = "/";
-      device = "/dev/mapper/eve-nixos";
-    } {
-      mountPoint = "/boot";
-      device = "/dev/sda1";
-    }
-    #{ mountPoint = "/";
-    #  device = "/dev/sda2";
-    #}
-
-    # Copy & Paste & Uncomment & Modify to add any other file system.
-    #
-    # { mountPoint = "/data"; # where you want to mount the device
-    #   device = "/dev/sdb"; # the device or the label of the device
-    #   # label = "data";
-    #   fsType = "ext3";      # the type of the partition.
-    #   options = "data=journal";
-    # }
-    { mountPoint = "/tmp";
-      device = "tmpfs";
-      fsType = "tmpfs";
-      options = "nosuid,nodev,relatime";
-    }
-  ];
 
   # XXX: add more fonts!
   fonts = {
