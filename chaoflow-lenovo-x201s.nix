@@ -8,23 +8,14 @@
 {
   require = [
     ./lenovo-x201s.nix
+    ./intel-xts-luksroot-sda.nix
+    ./nobeep.nix
   ];
 
   boot = {
-    initrd = {
-      # root fs
-      kernelModules = [ "dm-crypt" "ext4" "xts" ];
-      luksRoot = "/dev/sda3";
-    };
+    initrd.luksRoot = "/dev/sda3";
     kernelPackages = pkgs.linuxPackages_3_0_powertop;
-    blacklistedKernelModules = [ "pcspkr" ]; # no beeping, thx Jonas!
 
-    # grub 2 can boot from lvm, not sure whether version 2 is default
-    loader.grub = {
-      enable = true;
-      version = 2;
-      device = "/dev/sda";
-    };
 
     # major:minor number of my swap device, fully lvm-based system
     #resumeDevice = "254:1";
