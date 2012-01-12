@@ -82,7 +82,9 @@ Advantages
 ^^^^^^^^^^
 
 - rollback in case something is broken
+
 - possibility for having dedicated build environments
+
 - Packages that search things in ``/usr`` still won't work, but you
   can use one such profile and link it to ``/usr``. However, better
   would be to patch the offending packages.
@@ -129,11 +131,7 @@ Issues
 - notmuch asks twice for passphrase, probably something about the
   gpg-agent
 
-- sudo does not remember me after system restart
-
-- sudo nixos-rebuild switch complains about locales
-
-- rxvt-unicode terminfo not available when sudo
+- sudo does not remember me after system restart, /var/run/sudo is on tmpfs
 
 - anacron or is it somehow else ensured that commands are run, if
   powered off at given time
@@ -181,7 +179,7 @@ nice to have
 
 - console keymap (alt, ctrl on caps)
 
-- mail rely should pretend mails coming via submission are locally
+- mail relay should pretend mails coming via submission are locally
   generated to hide ip of the client sending it (server issue, not
   nixos related)
 
