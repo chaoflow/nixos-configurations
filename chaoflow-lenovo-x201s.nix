@@ -194,19 +194,6 @@
     { domain = "@audio"; item = "rtprio"; type = "-"; value = "99"; }
   ];
 
-#  security.sudo.configFile = ''
-## Don't edit this file. Set nixos option security.sudo.configFile instead
-#
-#Defaults env_reset
-#Defaults env_keep=LOCALE_ARCHIVE
-#
-## "root" is allowed to do anything.
-#root ALL=(ALL) SETENV: ALL
-#
-## Users in the "wheel" group can do anything.
-#%wheel ALL=(ALL) SETENV: ALL
-#  '';
-
   services.acpid.enable = true;
   services.httpd = {
     adminAddr = "flo@chaoflow.net";
