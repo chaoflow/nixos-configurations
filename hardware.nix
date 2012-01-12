@@ -44,7 +44,6 @@
 # 03:00.0 Network controller: Intel Corporation 6000 Series Gen2 (rev 34)
 # 0d:00.0 System peripheral: Ricoh Co Ltd Device e823 (rev 04)
 
-
 {
   # You may have a different wifi card
   # XXX: should these be turned into networking enable option (see 3945.nix)?

@@ -194,4 +194,7 @@
   #swapDevices = [{ label = "swap"; }];
 
   time.timeZone = "Europe/Berlin";
+
+  # not supported with stock nixos yet
+  trackpoint.sensitivity = "255";
 }
