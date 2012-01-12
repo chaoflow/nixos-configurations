@@ -17,13 +17,6 @@
     initrd.luksRoot = "/dev/sda3";
     kernelPackages = pkgs.linuxPackages_3_0_powertop;
 
-    # postBootCommands = ''
-    #   # http://thinkpad-wiki.org/Linux_Stromsparen#Stromspar-.C3.84nderungen_persistent_machen
-    #   echo -n 250 > /sys/devices/platform/i8042/serio1/sensitivity;
-    #   # http://www.lesswatts.org/tips/cpu.php#smpsched
-    #   echo -n 1 > /sys/devices/system/cpu/sched_smt_power_savings;
-    # '';
-
     # major:minor number of my swap device, fully lvm-based system
     #resumeDevice = "254:1";
   };
