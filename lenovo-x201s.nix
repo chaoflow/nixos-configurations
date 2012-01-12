@@ -47,7 +47,9 @@
 
 {
   # You may have a different wifi card
+  # XXX: should these be turned into networking enable option (see 3945.nix)?
   require = [
+    "${modulesPath}/hardware/network/intel-5000.nix"
     "${modulesPath}/hardware/network/intel-6000.nix"
     "${modulesPath}/hardware/network/intel-6000g2a.nix"
   ];
