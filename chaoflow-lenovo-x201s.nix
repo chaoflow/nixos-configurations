@@ -26,16 +26,6 @@
       device = "/dev/sda";
     };
 
-    # Currently I'm aiming only at minimum power usage. Changing these settings
-    # when on AC might be added later. min_power setting seems only to be
-    # effective for hosts that are actually connected to something, in my case
-    # only host0.
-    postBootCommands = ''
-      for x in /sys/class/scsi_host/*/link_power_management_policy; do
-        echo min_power > $x
-      done
-    '';
-
     # major:minor number of my swap device, fully lvm-based system
     #resumeDevice = "254:1";
   };
