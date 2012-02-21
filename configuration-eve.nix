@@ -15,7 +15,7 @@
 
   boot = {
     initrd.luksRoot = "/dev/sda3";
-    kernelPackages = pkgs.linuxPackages_3_0_powertop;
+    kernelPackages = pkgs.linuxPackages_3_0;
 
     # major:minor number of my swap device, fully lvm-based system
     #resumeDevice = "254:1";
