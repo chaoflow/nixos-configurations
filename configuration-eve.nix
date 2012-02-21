@@ -148,6 +148,7 @@
   };
 
   powerManagement.enable = true;
+  powerManagement.aggressive = true;
 
   users.defaultUserShell = "/var/run/current-system/sw/bin/zsh";
 
