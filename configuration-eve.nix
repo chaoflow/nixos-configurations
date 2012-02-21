@@ -39,19 +39,66 @@
     # XXX: still not sure when it is better to put a package here and when to
     # use the default profile.
     systemPackages = with pkgs; [
-      acpitool alsaLib alsaPlugins alsaUtils bc cpufrequtils
-      cryptsetup ddrescue emacs file gitFull gnupg gnupg1
-      haskellPackages.ghc haskellPackages.haskellPlatform htop
-      keychain links2 mailutils mercurial ncftp netcat nmap notmuch
-      emacs23Packages.org p7zip parted pinentry powertop pwgen screen
-      sdparm stdmanpages subversion tcpdump telnet units unrar unzip
-      vim wget w3m zsh
+      acpitool
+      alsaLib
+      alsaPlugins
+      alsaUtils
+      bc
+      cpufrequtils
+      cryptsetup
+      ddrescue
+      emacs24
+      emacs24Packages.calfw
+      emacs24Packages.js2
+      emacs24Packages.notmuch
+      emacs24Packages.org
+      file
+      gitFull
+      gnupg
+      gnupg1
+      haskellPackages.ghc
+      haskellPackages.haskellPlatform
+      htop
+      keychain
+      links2
+      mailutils
+      mercurial
+      ncftp
+      netcat
+      nmap
+      p7zip
+      parted
+      pinentry
+      powertop
+      pwgen
+      screen
+      sdparm
+      stdmanpages
+      subversion
+      tcpdump
+      telnet
+      units
+      unrar
+      unzip
+      vim
+      w3m
+      wget
+      zsh
     ];
     x11Packages = with pkgs; [
-      haskellPackages.xmonad haskellPackages.xmonadContrib
-      haskellPackages.xmonadExtras rxvt_unicode scrot stalonetray
-      xfontsel xlibs.xev xlibs.xinput xlibs.xmessage xlibs.xmodmap
-      xlockmore xpdf
+      haskellPackages.xmonad
+      haskellPackages.xmonadContrib
+      haskellPackages.xmonadExtras
+      rxvt_unicode
+      scrot
+      stalonetray
+      xfontsel
+      xlibs.xev
+      xlibs.xinput
+      xlibs.xmessage
+      xlibs.xmodmap
+      xlockmore
+      xpdf
     ];
   };
 
