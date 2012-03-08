@@ -14,7 +14,8 @@
   ];
 
   boot = {
-    initrd.luksRoot = "/dev/sda3";
+    initrd.luks.enable = true;
+    initrd.luks.devices = [ { name = "luksroot"; device = "/dev/sda3"; } ];
     kernelPackages = pkgs.linuxPackages_3_0;
 
     # major:minor number of my swap device, fully lvm-based system
@@ -127,13 +128,13 @@
     # extraHosts = ''
     #   127.0.0.1 eve.chaoflow.net eve
     # '';
-    enableWLAN = true;
     firewall = {
       allowedTCPPorts = [ 80 ];
       enable = true;
     };
     hostName = "eve";
     interfaceMonitor.enable = false; # Watch for plugged cable.
+    wireless.enable = true;
   };
 
   nix.extraOptions = ''
