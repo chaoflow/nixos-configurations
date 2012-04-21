@@ -44,62 +44,140 @@
       alsaLib
       alsaPlugins
       alsaUtils
+      ant
+      aumix
+      autoconf
+      automake
+      bazaar
+      bazaarTools
       bc
+      beret
+      cmake
+      colordiff
       cpufrequtils
       cryptsetup
+      cvs
+      cvsps
       ddrescue
+      dmenu
+      dosbox
       emacs24
+      emacs24Packages.bbdb
       emacs24Packages.calfw
+      emacs24Packages.haskellMode
       emacs24Packages.js2
       emacs24Packages.notmuch
       emacs24Packages.org
       file
-      gitFull
+      gcc
+      gdb
+      geeqie
+      ghostscript
+      gimp
+      gitAndTools.gitFull
+      gitAndTools.qgit
+      gitAndTools.svn2git
+      gitAndTools.tig
       gnupg
       gnupg1
+      gnumake
+      gperf
+      graphviz
+      guile
       haskellPackages.ghc
       haskellPackages.haskellPlatform
+      hdparm
       htop
+      imagemagick
+      io
+      irssi
+      jdkPlugin
+      jscoverage
+      jwhois
       keychain
       links2
+      lsof
+      lua5
+      lxdvdrip
+      lynx
       mailutils
+      man
+      mdbtools
       mercurial
+      mjpegtools
       ncftp
       netcat
       nmap
+      nodejs
+      offlineimap
+      openvpn
       p7zip
       parted
+      pdfjam
+      pdftk
       pinentry
       powertop
+      pulseaudio
       pwgen
+      pythonFull
+      pythonPackages.ipython
+      qrencode
+      rLang
+      rtorrent
+      ruby
       screen
       sdparm
       stdmanpages
       subversion
       tcpdump
       telnet
+      texLive
       units
       unrar
       unzip
+      vde2
       vim
+      vlc
       w3m
       wget
+      zip
       zsh
     ];
     x11Packages = with pkgs; [
+      chromeWrapper
+      conkeror
+      crack_attack
+      firefoxWrapper
+      gv
+      glxinfo
       haskellPackages.xmonad
       haskellPackages.xmonadContrib
       haskellPackages.xmonadExtras
+      inkscape
+      kicad
+      kde4.kruler
+      kde4.kwallet
+      MPlayer
       rxvt_unicode
+      qemu_kvm
+      rdesktop
       scrot
+      scummvm
       stalonetray
+      unetbootin
+      wine
+      wireshark
       xfontsel
       xlibs.xev
       xlibs.xinput
       xlibs.xmessage
       xlibs.xmodmap
       xlockmore
+      xmoto
+      xorg.xkill
       xpdf
+      xulrunner
+      zathura
     ];
   };
 
