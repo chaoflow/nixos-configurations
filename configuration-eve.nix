@@ -246,6 +246,7 @@
     { domain = "@audio"; item = "rtprio"; type = "-"; value = "99"; }
   ];
 
+  services.atd.enable = false;
   services.httpd = {
     adminAddr = "flo@chaoflow.net";
     enable = false;
