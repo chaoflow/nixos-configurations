@@ -2,11 +2,23 @@ NixOS Configuration
 ===================
 
 Configuration and description of my nixos configuration. If you have some nice
-ideas how to improve, feel free to fork and let me know about your changes.
+ideas how to improve, feel free to fork and let me know about your
+changes or just write me an email.
 
 Also if I am explaining something wrong, please let me know.
 
 Enjoy NixOS!
+
+How I use this config::
+
+  % ls -l /etc/nixos
+  total 8K
+  drwx------ 3 root root 4096 Feb 13  2011 cfg-private/
+  drwxr-xr-x 4 cfl  cfl  4096 Jul 16 00:50 cfg-public/
+  lrwxrwxrwx 1 root root   32 Jan 12  2012 configuration.nix -> cfg-public/configuration-eve.nix
+
+cfg-public is the nixos-configurations repo, cfg-private contains
+credentials for e.g. postfix smtp delivery.
 
 
 Hardware
