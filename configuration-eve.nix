@@ -14,6 +14,9 @@
   ];
 
   boot = {
+    extraModprobeConfig = ''
+      options thinkpad_acpi fan_control=1
+    '';
     initrd.luks.enable = true;
     initrd.luks.devices = [ { name = "luksroot"; device = "/dev/sda3"; } ];
     kernelPackages = pkgs.linuxPackages_3_2;
