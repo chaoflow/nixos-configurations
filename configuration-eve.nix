@@ -21,6 +21,8 @@
     initrd.luks.devices = [ { name = "luksroot"; device = "/dev/sda3"; } ];
     kernelPackages = pkgs.linuxPackages_3_2;
 
+    # powertop needs msr and so far it does not load when needed
+    kernelModules = [ "msr" ];
     # major:minor number of my swap device, fully lvm-based system
     #resumeDevice = "254:1";
   };
