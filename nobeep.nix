@@ -2,5 +2,5 @@
 
 {
   # no beeping, thx Jonas!
-  boot.blacklistedKernelModules = [ "pcspkr" ];
+  boot.blacklistedKernelModules = [ "snd_pcsp" "pcspkr" ];
 }
