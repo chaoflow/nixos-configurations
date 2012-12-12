@@ -21,7 +21,7 @@
     initrd.luks.devices = [ { name = "luksroot"; device = "/dev/sda3"; } ];
     # powertop needs msr and so far it does not load when needed
     kernelModules = [ "msr" ];
-    kernelPackages = pkgs.linuxPackages_3_5;
+    kernelPackages = pkgs.linuxPackages_3_6;
     # major:minor number of my swap device, fully lvm-based system
     #resumeDevice = "254:1";
   };
@@ -226,6 +226,7 @@
       ${pkgs.iptables}/sbin/iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -j MASQUERADE
     '';
     wireless.enable = true;
+    wireless.driver = "nl80211";
     wireless.interfaces = [ "wlan0" ];
     wireless.userControlled.enable = true;
   };
