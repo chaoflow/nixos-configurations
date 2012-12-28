@@ -232,13 +232,15 @@
   };
 
   nix.extraOptions = ''
+    auto-optimise-store = true
+    env-keep-derivations = true
     gc-keep-outputs = true
     gc-keep-derivations = true
   '';
   nix.useChroot = true;
 
-  # XXX: unused so far
   nixpkgs.config = {
+    # XXX: unused so far
     xkeyboard_config = { extraLayoutPath = "./xkb-layout/chaoflow"; };
   };
 
