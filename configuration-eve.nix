@@ -203,6 +203,8 @@
     ];
   };
 
+  hardware.pulseaudio.enable = true;
+
   # Select internationalisation properties.
   i18n = {
     consoleFont = "lat9w-16";
@@ -232,7 +234,7 @@
     '';
     wireless.enable = true;
     wireless.driver = "nl80211";
-    wireless.interfaces = [ "wlan0" ];
+    wireless.interfaces = [ "wlp2s0" ];
     wireless.userControlled.enable = true;
   };
 
@@ -249,8 +251,9 @@
     xkeyboard_config = { extraLayoutPath = "./xkb-layout/chaoflow"; };
   };
 
+  powerManagement.cpuFreqGovernor = "ondemand";
   powerManagement.enable = true;
-  powerManagement.aggressive = true;
+  #powerManagement.aggressive = true;
 
   users.defaultUserShell = "/var/run/current-system/sw/bin/zsh";
 
@@ -259,15 +262,26 @@
   ];
 
   services.atd.enable = false;
+  services.dovecot2.enable = true;
+  services.dovecot2.enablePop3 = false;
+  services.dovecot2.mailLocation = "maildir:~/.mail";
+  services.dovecot2.extraConfig = ''
+    listen = 127.0.0.1
+    namespace {
+      separator = /
+      inbox = yes
+    }
+  '';
   services.httpd = {
     adminAddr = "flo@chaoflow.net";
-    enable = false;
+    enable = true;
     enableUserDir = true;
   };
   services.locate.enable = true;
   services.nixosManual.showManual = false;
-  services.openssh.enable = true;
+  services.openssh.enable = false;
   services.printing.enable = true;
+  services.printing.drivers = [ pkgs.foomatic_filters ];
   services.postfix = {
     destination = [ "localhost" "eve.chaoflow.net" ];
     enable = true;
@@ -286,7 +300,8 @@
       #
       # the nixos config option does not allow to specify a port, beware:
       # small 'h' in contrast to the config option with capital 'H'
-      relayhost = [tesla.chaoflow.net]:submission
+      relayhost = [0x2c.org]:submission
+      #relayhost = [127.0.0.1]:1587
       #
       #XXX: needs server certificate checking
       #smtp_enforce_tls = yes
@@ -313,7 +328,9 @@
     postmasterAlias = "root";
     rootAlias = "cfl";
   };
+  services.thinkfan.enable = true;
   services.ttyBackgrounds.enable = false;
+  services.udisks.enable = true;
   services.xserver = {
     autorun = true;
     # no desktop manager, no window manager configured here. This
@@ -323,7 +340,7 @@
     desktopManager.xterm.enable = false;
     displayManager.slim = {
       defaultUser = "cfl";
-      hideCursor = true;
+      #hideCursor = true;
     };
     enable = true;
     exportConfiguration = true;
@@ -336,8 +353,11 @@
   # List swap partitions that are mounted at boot time.
   #swapDevices = [{ label = "swap"; }];
 
+  #time.timeZone = "Asia/Hong_Kong";
   time.timeZone = "Europe/Berlin";
+  #time.timeZone = "US/Eastern";
+  #time.timeZone = "US/Pacific";
 
   # not supported with stock nixos yet
-  trackpoint.sensitivity = "255";
+  #trackpoint.sensitivity = "255";
 }
