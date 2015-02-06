@@ -285,6 +285,7 @@
   services.httpd = {
     adminAddr = "flo@chaoflow.net";
     enable = true;
+    enablePHP = true;
     enableUserDir = true;
   };
   services.locate.enable = true;
