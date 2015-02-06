@@ -43,8 +43,6 @@
     #   export RUBYOPT=rubygems
     # '';
 
-    # XXX: still not sure when it is better to put a package here and when to
-    # use the default profile.
     systemPackages = with pkgs; [
       acpitool
       alsaLib
@@ -60,7 +58,6 @@
       keychain
       sdparm
       zsh
-
           ant
           autoconf
           automake
@@ -72,14 +69,6 @@
           colordiff
           cvs
           cvsps
-          emacs24
-          emacs24Packages.bbdb
-          emacs24Packages.calfw
-          emacs24Packages.haskellMode
-          emacs24Packages.js2
-          emacs24Packages.notmuch
-          emacs24Packages.org
-          emacs24Packages.emacsw3m
           gcc
           gdb
           geeqie
@@ -94,8 +83,6 @@
           gperf
           graphviz
           guile
-          haskellPackages.ghc
-          haskellPackages.haskellPlatform
           imagemagick
           io
           irssi
@@ -106,26 +93,19 @@
           lua5
           lxdvdrip
           lynx
-          mailutils
           man
           mdbtools
           mercurial
-          mjpegtools
           ncftp
           netcat
           nmap
-          nodejs
           openvpn
           p7zip
           parted
           pdfjam
-          pdftk
           pinentry
           powertop
-          pulseaudio
           pwgen
-          pythonFull
-          pythonPackages.ipython
           qrencode
           rtorrent
           ruby
@@ -144,40 +124,23 @@
             };
            in myTexLive)
           units
-          unrar
           unzip
-          vde2
           vim
           vlc
           w3m
           wget
           zip
-          conkeror
-          crack_attack
-          firefoxWrapper
           gv
           glxinfo
-          inkscape
-          kicad
-          kde4.kruler
-          kde4.kwallet
           mplayer
           rxvt_unicode
           qemu_kvm
-          rdesktop
           scrot
-          scummvm
           unetbootin
-          wine
-          wireshark
           xlockmore
-          xmoto
           xorg.xkill
           xpdf
-          xulrunner
-          zathura
-    ];
-    x11Packages = with pkgs; [
+
       haskellPackages.xmonad
       haskellPackages.xmonadContrib
       haskellPackages.xmonadExtras
