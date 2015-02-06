@@ -213,6 +213,9 @@
   hardware.pulseaudio.enable = true;
   # per user is broken (for me?)
   hardware.pulseaudio.systemWide = true;
+  hardware.trackpoint.enable = true;
+  hardware.trackpoint.sensitivity = 255;
+  #hardware.trackpoint.speed = 255;
 
   # Select internationalisation properties.
   i18n = {
@@ -366,7 +369,4 @@
   time.timeZone = "Europe/Berlin";
   #time.timeZone = "US/Eastern";
   #time.timeZone = "US/Pacific";
-
-  # not supported with stock nixos yet
-  #trackpoint.sensitivity = "255";
 }
