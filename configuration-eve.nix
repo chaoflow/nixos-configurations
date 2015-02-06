@@ -241,6 +241,7 @@
       ip addr add 10.0.0.1/24 dev lo
       ${pkgs.procps}/sbin/sysctl -w net.ipv4.ip_forward=1
     '';
+    networkmanager.enable = false;
     wireless.enable = true;
     wireless.driver = "nl80211";
     wireless.interfaces = [ "wlp2s0" ];
