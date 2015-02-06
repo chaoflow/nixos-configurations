@@ -17,8 +17,8 @@
     extraModprobeConfig = ''
       options thinkpad_acpi fan_control=1
     '';
-    initrd.luks.enable = true;
-    initrd.luks.devices = [ { name = "luksroot"; device = "/dev/sda3"; } ];
+    initrd.luks.devices = [ { name = "luksroot"; device = "/dev/sda3";
+                              allowDiscards = true; } ];
     # powertop needs msr and so far it does not load when needed
     kernelModules = [ "msr" ];
     kernelPackages = pkgs.linuxPackages_3_9;
