@@ -337,8 +337,6 @@
     rootAlias = "cfl";
   };
   services.thinkfan.enable = true;
-  services.ttyBackgrounds.enable = false;
-  services.udisks.enable = true;
   services.xserver = {
     autorun = true;
     # no desktop manager, no window manager configured here. This
