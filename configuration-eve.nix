@@ -334,8 +334,6 @@
       smtp_use_tls = yes
     '';
     hostname = "eve.chaoflow.net";
-    origin = "eve.chaoflow.net";
-    postmasterAlias = "root";
     rootAlias = "cfl";
   };
   services.thinkfan.enable = true;
