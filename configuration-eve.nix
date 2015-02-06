@@ -211,6 +211,8 @@
   };
 
   hardware.pulseaudio.enable = true;
+  # per user is broken (for me?)
+  hardware.pulseaudio.systemWide = true;
 
   # Select internationalisation properties.
   i18n = {
