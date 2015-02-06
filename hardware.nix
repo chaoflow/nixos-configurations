@@ -71,8 +71,6 @@
     build-cores = 4
   '';
   nix.maxJobs = 4;
-  services.xserver = {
-    videoDrivers = [ "intel" ];
-    xkbModel = "thinkpad60";
-  };
+  services.xserver.videoDrivers = [ "intel" ];
+  services.xserver.xkbModel = "thinkpad60";
 }
